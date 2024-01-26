@@ -1,6 +1,6 @@
 <!doctype html><html><head>
   <meta charset=utf8>
-  <title>ICRA Lluís Bosch</title>
+  <title>Lluís Bosch ICRA</title>
   <style>
     body{
       font-family:monospace;
@@ -14,9 +14,15 @@
     b[titol]{
       font-size:larger;
       background:#ccc;
+      background:linear-gradient(to right,#ccc,#eee);
       display:block;
       margin:-8px;
       padding:8px;
+      margin-bottom:6.5px;
+    }
+    hr{
+      border:none;
+      border-bottom:1px solid #aaa;
     }
     li[ok]{
       background:#af0;
@@ -29,6 +35,11 @@
     li[ok][visible]{
       display:list-item;
     }
+    li[pri]:after{
+      content:'[PRIORITY]';
+      font-weight:bold;
+      background:lightgreen;
+    }
   </style>
 </head><body>
 
@@ -39,7 +50,7 @@
       &mdash; ICRA Research support computer scientist
       &mdash; contact me via MS Teams or at lbosch@icra.cat
     </small>
-  </b><hr>
+  </b>
   <div>
     ENG: List of <b>pending tasks</b> ordered by date.  Older tasks will be
     prioritized.<br>
@@ -73,7 +84,7 @@
 </div>
 
 <ul>
-  <li>[2023-12-11] <b>P Gimenez</b>:                   Base de dades mesocosmos i interfície web nova (<a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>)</li>
+  <li pri>[2023-12-11] <b>P Gimenez</b>:                   Base de dades mesocosmos i interfície web nova (<a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>)</li>
   <li>[2023-12-12] <b>E Tornés</b>:                    Reconcilació base de dades omnidia</li>
   <li>[2023-12-13] <b>MJ Farré, M Celic, FA Zafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)</li>
   <li ok>[2023-12-14] <b>S Busquets, L Corominas</b>:  Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
