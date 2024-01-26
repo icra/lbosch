@@ -1,0 +1,108 @@
+<!doctype html><html><head>
+  <meta charset=utf8>
+  <title>Peticions lbosch</title>
+  <style>
+    body{
+      font-family:monospace;
+    }
+    summary{
+      cursor:pointer;
+    }
+    summary:hover{
+      text-decoration:underline;
+    }
+    b[titol]{
+      font-size:larger;
+      background:#ccc;
+      display:block;
+      margin:-8px;
+      padding:8px;
+    }
+    li[ok]{
+      background:#af0;
+      display:none;
+    }
+    li[ok]:after{
+      content:' [completada]';
+      font-weight:bold;
+    }
+    li[ok][visible]{
+      display:list-item;
+    }
+  </style>
+</head><body>
+
+<div>
+  <b titol>
+    Lluís Bosch
+    <small>
+      &mdash; ICRA Research support computer scientist
+      &mdash; contact me via MS Teams or at lbosch@icra.cat
+    </small>
+  </b><hr>
+  <div>
+    ENG: List of <b>pending tasks</b> ordered by date.  Older tasks will be
+    prioritized.<br>
+    CAT: Llista de <b>tasques pendents</b> ordenades per data de petició.  Les
+    tasques més antigues seran prioritzades.<br>
+  </div><hr>
+  <div>
+    <details>
+      <summary>
+        Description of my role as research support computer scientist
+      </summary>
+      <div>
+        <ul>
+          <li>Assistance in programming.
+          <li>Mathematical support.
+          <li>Web page creation for data management.
+          <li>Help using Linux operating system.
+          <li>GitHub support.
+        </ul>
+        Download the slides:
+        <a href="docs/2023-11-30-lluis-bosch-empowering-research-through-computing-support.pptx">
+          &#128196;2023-11-30-lluis-bosch-empowering-research-through-computing-support.pptx
+        </a> (PPTX file).
+      </div>
+    </details>
+  </div><hr>
+  <button onclick="toggle_tasques_completades()">
+    ENG: See/hide completed tasks |
+    CAT: Veure/amagar tasques completades
+  </button>
+</div>
+
+<ul>
+  <li>[2023-12-11] <b>P Gimenez</b>:                   Base de dades mesocosmos i interfície web nova (<a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>)</li>
+  <li>[2023-12-12] <b>E Tornés</b>:                    Reconcilació base de dades omnidia</li>
+  <li>[2023-12-13] <b>MJ Farré, M Celic, FA Zafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)</li>
+  <li ok>[2023-12-14] <b>S Busquets, L Corominas</b>:  Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
+  <li>[2023-12-15] <b>L Corominas</b>:                 Ecovat crear prototip aparell innowatt</li>
+  <li ok>[2023-12-20] <b>L Corominas</b>:              Renovació domini loading icradev.cat</li>
+  <li ok>[2024-01-03] <b>I Sanchez</b>:                Modificació web consum-electric.icradev.cat</li>
+  <li>[2024-01-10] <b>O Llorente</b>:                  Dubtes web colab icra + basquet-girona</li>
+  <li>[2024-01-10] <b>N Ros</b>:                       Tractament estadístic dades</li>
+  <li>[2024-01-11] <b>O Gutierrez</b>:                 Recollir ordinador Fontajau i tractament de dades 2023 any sencer (optimizació potències)</li>
+  <li ok>[2024-01-12] <b>L Corominas</b>:              Article PCA</li>
+  <li>[2024-01-12] <b>L Corominas</b>:                 Sensor placement colab D Martinez UDG</li>
+  <li>[2024-01-17] <b>A Pico</b>:                      Cluster: instalar megan6. Arreglar error dconf</li>
+  <li>[2024-01-23] <b>L Corominas</b>:                 Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
+  <li>[2024-01-24] <b>JL Balcazar</b>:                 Cluster: instalar cutadapt, spades, skesa, pgap, quast</li>
+  <li>[2024-01-24] <b>S Busquets, L Jaurrieta</b>:     Videotrucada per dubtes modificació web 4sm (<a href="//4sm.icradev.cat">4sm.icradev.cat</a>)</li>
+</ul>
+
+<script>
+  //funció per mostrar/amagar tasques completades
+  function toggle_tasques_completades(){
+    if(this.veure==undefined) this.veure=false;
+    this.veure^=1;
+    let lis = document.querySelectorAll("li[ok]");
+    lis.forEach(li=>{
+      if(this.veure){
+        li.setAttribute("visible","");
+      }else{
+        li.removeAttribute("visible");
+      }
+    });
+  }
+</script>
