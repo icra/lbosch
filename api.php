@@ -15,7 +15,7 @@
     if($seconds<0){
       return "future";
     }else if($seconds <= 60){
-      return "now";
+      return "less than a minute ago";
     }else if($minutes <=60){
       if($minutes==1){ return "a minute ago"; }
       else{ return "$minutes minutes ago"; }
