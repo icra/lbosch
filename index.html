@@ -35,14 +35,14 @@
       background:lightgreen;
       display:none;
     }
-    li[ok]:after{
+    li[ok]:before{
       content:' [completada]';
       font-weight:bold;
     }
     li[ok][visible]{
       display:list-item;
     }
-    li[pri]:after{
+    li[pri]:before{
       content:'[PRIORITY]';
       font-weight:bold;
       background:lightgreen;
@@ -106,12 +106,13 @@
   <li ok>[2024-02-01] <b>JL Balcazar</b>:              Suport + crear usuari cluster Pamela D29 (pcolman)</li>
 
   <li pri>[2023-12-11] <b>P Gimenez, V Acuña</b>:      Base de dades mesocosmos i interfície web nova (<a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>)</li>
+
   <li>[2023-12-12] <b>E Tornés</b>:                    Reconcilació base de dades omnidia (deadline: abril24)</li>
   <li>[2023-12-13] <b>MJ Farré, M Celic, FA Zafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)</li>
   <li>[2023-12-15] <b>L Corominas</b>:                 Ecovat crear prototip aparell innowatt</li>
   <li>[2023-12-20] <b>L Corominas</b>:                 Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
   <li>[2024-01-10] <b>O Llorente</b>:                  Dubtes web colab icra + basquet-girona</li>
-  <li>[2024-01-10] <b>N Ros</b>:                       Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom. Li he passat canal de youtube "tilestats".</li>
+  <li>[2024-01-10] <b>N Ros</b>:                       Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom. Canal youtube "tilestats".</li>
   <li>[2024-01-11] <b>O Gutierrez</b>:                 Recollir ordinador Fontajau i tractament de dades 2023 any sencer (optimizació potències)</li>
   <li>[2024-01-17] <b>A Pico</b>:                      Cluster: instalar megan6 [ok]. Arreglar error dconf</li>
   <li>[2024-01-23] <b>L Corominas</b>:                 Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>) [prioritatri lcorominas]</li>
@@ -124,7 +125,7 @@
 </ul>
 
 <script>
-  //funció per mostrar/amagar tasques completades
+  //mostrar/amagar tasques completades
   function toggle_tasques_completades(){
     if(this.veure==undefined) this.veure=false;
     this.veure^=1;
@@ -138,7 +139,7 @@
     });
   }
 
-  //llegeix la data d'última modificació del fitxer index.html
+  //llegeix data d'última modificació fitxer "index.html"
   fetch("api.php").then(r=>r.text()).then(txt=>{
     document.querySelector("#indexhtmlfilemtime").innerHTML=txt;
   });
