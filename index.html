@@ -32,7 +32,7 @@
       width:200px;
     }
     li[ok]{
-      background:#af0;
+      background:lightgreen;
       display:none;
     }
     li[ok]:after{
@@ -46,6 +46,9 @@
       content:'[PRIORITY]';
       font-weight:bold;
       background:lightgreen;
+    }
+    #indexhtmlfilemtime{
+      background:#ddd;
     }
   </style>
 </head><body>
@@ -79,10 +82,18 @@
       </div>
     </details>
   </div><hr>
-  <button onclick="toggle_tasques_completades()">
-    ENG: See/hide completed tasks |
-    CAT: Veure/amagar tasques completades
-  </button>
+</div>
+
+<div>
+  <div>
+    <code>Última actualització: <code id=indexhtmlfilemtime>...</code></code>
+  </div>
+  <div style="margin-top:5px">
+    <button onclick="toggle_tasques_completades()">
+      ENG: See/hide completed tasks |
+      CAT: Veure/amagar tasques completades
+    </button>
+  </div>
 </div>
 
 <ul id=tasques>
@@ -125,4 +136,9 @@
       }
     });
   }
+
+  //llegeix la data d'última modificació del fitxer index.html
+  fetch("api.php").then(r=>r.text()).then(txt=>{
+    document.querySelector("#indexhtmlfilemtime").innerHTML=txt;
+  });
 </script>
