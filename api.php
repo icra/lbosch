@@ -37,9 +37,8 @@
     }
   }
 
-  $t  = filemtime("index.html");
-  $ts = strftime("%Y-%m-%d %H:%M:%S",$t);
-  $ta = time_ago($ts);
-
+  $t  = filemtime("index.html"); //numero
+  $ts = strftime("%Y-%m-%d %H:%M:%S",$t); //string
+  $ta = time_ago($ts); //string
   echo "$ts ($ta)";
 ?>

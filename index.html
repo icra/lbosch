@@ -27,32 +27,57 @@
     ul#tasques li{
       border-bottom:1px solid #ccc;
     }
-    ul#tasques li b{
-      display:inline-block;
-      width:200px;
+    ul#tasques li:before{
+      content:'[TODO]';
     }
-    li[ok]{
-      background:lightgreen;
+    ul#tasques li[ok]{
       display:none;
     }
-    li[ok]:before{
-      content:' [completada]';
+    ul#tasques li[ok]:before{
+      content:' [COMP]';
+      background:#ddd;
       font-weight:bold;
     }
-    li[ok][visible]{
+    ul#tasques li[ok][visible]{
       display:list-item;
     }
-    li[pri]:before{
-      content:'[PRIORITY]';
-      font-weight:bold;
+    ul#tasques li[pri]:before{
+      content:'[PRIO]';
       background:lightgreen;
+    }
+    ul#tasques li[wip]:before{
+      content:'[WIPR]';
+      background:orange;
     }
     #indexhtmlfilemtime{
       background:#ddd;
     }
   </style>
+  <script>
+    //mostrar/amagar tasques completades
+    function toggle_tasques_completades(){
+      if(this.veure==undefined) this.veure=false;
+      this.veure^=1;
+      let lis = document.querySelectorAll("li[ok]");
+      lis.forEach(li=>{
+        if(this.veure){
+          li.setAttribute("visible","");
+        }else{
+          li.removeAttribute("visible");
+        }
+      });
+    }
+
+    //llegeix data d'última modificació fitxer "index.html"
+    window.onload = function(){
+      fetch("api.php").then(r=>r.text()).then(txt=>{
+        document.querySelector("#indexhtmlfilemtime").innerHTML=txt;
+      });
+    }
+  </script>
 </head><body>
 
+<!--titol i extraa info-->
 <div>
   <b titol>Lluís Bosch
     <small>
@@ -66,7 +91,7 @@
   </div><hr>
   <div>
     <details>
-      <summary>Description of my role as research support computer scientist</summary>
+      <summary>Description of "Research Support Computer Scientist" role</summary>
       <div>
         <ul>
           <li>Assistance in programming.
@@ -82,66 +107,68 @@
       </div>
     </details>
   </div><hr>
+  <div
+    style="
+      display:flex;
+      align-items:center;
+    "
+  >
+    <div style="margin-right:5px">
+      <button onclick="toggle_tasques_completades()">
+        ENG: See/hide completed tasks |
+        CAT: Veure/amagar tasques completades
+      </button>
+    </div>
+    <div>
+      <code>Updated: <code id=indexhtmlfilemtime>...</code></code>
+    </div>
+  </div><hr>
+  <!--llegenda-->
+  <div
+    style="
+      font-size:smaller;
+      margin-top:5px;
+      text-align:right;
+    "
+  >
+    <b>Llegenda</b>:
+    <span style="background:lightgreen">[PRIO] tasca prioritària</span>
+    <span style="background:orange">[WIPR] tasca en procés</span>
+    <span style="background:">[TODO] tasca pendent</span>
+    <span style="background:#ddd">[COMP] tasca completada</span>
+  </div>
 </div>
 
-<div>
-  <div>
-    <code>Last update: <code id=indexhtmlfilemtime>...</code></code>
-  </div>
-  <div style="margin-top:5px">
-    <button onclick="toggle_tasques_completades()">
-      ENG: See/hide completed tasks |
-      CAT: Veure/amagar tasques completades
-    </button>
-  </div>
-</div>
-
+<!--llista tasques-->
 <ul id=tasques>
-  <li ok>[2023-12-14] <b>S Busquets, L Corominas</b>: Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
-  <li ok>[2024-01-03] <b>I Sanchez</b>:               Modificació web consum-electric.icradev.cat</li>
-  <li ok>[2024-01-12] <b>L Corominas</b>:             Article PCA</li>
-  <li ok>[2024-01-14] <b>J Cuenca (SIE)</b>:          Cluster: reiniciar node compute-12</li>
-  <li ok>[2024-01-17] <b>O Sacristan</b>:             R Venn diagrams ajuda amb el codi plot abundància relativa</li>
-  <li ok>[2024-01-29] <b>L Guerrero</b>:              Release dades públiques (github i zenodo) xarxa vigilància SARSAIGUA (<a href="//github.com/icra/sars-aigues">github.com/icra/sars-aigues</a>)</li>
-  <li ok>[2024-02-01] <b>J Balcazar</b>:              Suport + crear usuari cluster Pamela D29 (pcolman)</li>
+  <li ok>[2023-12-14] <b>sbusquets, lcorominas</b>: Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
+  <li ok>[2024-01-03] <b>isanchez</b>:              Modificació web consum-electric.icradev.cat</li>
+  <li ok>[2024-01-12] <b>lcorominas</b>:            Article PCA</li>
+  <li ok>[2024-01-14] <b>jcuenca (SIE)</b>:         Cluster: arreglar node compute-12</li>
+  <li ok>[2024-01-17] <b>osacristan</b>:            R Venn diagrams ajuda amb el codi plot abundància relativa</li>
+  <li ok>[2024-01-29] <b>lguerrero</b>:             Release dades públiques (github i zenodo) xarxa vigilància SARSAIGUA (<a href="//github.com/icra/sars-aigues">github.com/icra/sars-aigues</a>)</li>
+  <li ok>[2024-02-01] <b>jbalcazar</b>:             Suport usuari cluster pcolman</li>
 
   <!--tasca actual-->
-  <li pri>[2023-12-11] <b>P Gimenez, V Acuña</b>:     Base de dades mesocosmos i interfície web nova (<a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>)</li>
+  <li pri>[2023-12-11] <b>P Gimenez, V Acuña</b>: Base de dades mesocosmos i interfície web nova (<a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>)</li>
 
-  <li>[2023-12-12] <b>E Tornés</b>:                   Reconcilació base de dades omnidia (deadline: abril24)</li>
-  <li>[2023-12-13] <b>M Farré, M Celic, F Zafra</b>:  Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)</li>
-  <li>[2023-12-15] <b>L Corominas</b>:                Ecovat crear prototip aparell innowatt</li>
-  <li>[2023-12-20] <b>L Corominas</b>:                Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
-  <li>[2024-01-10] <b>O Llorente</b>:                 Dubtes web colab icra + basquet-girona</li>
-  <li>[2024-01-10] <b>N Ros</b>:                      Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom. Canal youtube "tilestats".</li>
-  <li>[2024-01-11] <b>O Gutierrez</b>:                Recollir ordinador Fontajau i tractament de dades 2023 any sencer (optimizació potències)</li>
-  <li>[2024-01-17] <b>A Pico</b>:                     Cluster: instalar megan6 [ok]. Arreglar error dconf</li>
-  <li>[2024-01-23] <b>L Corominas</b>:                Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>) [prioritatri lcorominas]</li>
-  <li>[2024-01-23] <b>G Buttiglieri, M Riva</b>:      Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)</li>
-  <li>[2024-01-24] <b>J Balcazar</b>:                 Cluster: instalar cutadapt, spades, skesa, pgap, quast. Falta només "pgap"</li>
-  <li>[2024-01-24] <b>S Busquets, L Jaurrieta</b>:    Dubtes i suport modificació web 4sm (<a href="//4sm.icradev.cat">4sm.icradev.cat</a>)</li>
-  <li>[2024-01-29] <b>O Gutierrez, L Corominas</b>:   Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
-  <li>[2024-01-29] <b>L Corominas, L Bosch</b>:       Traduir paquet innowatt (protocol lectura comptadors) a python3 (de python2)</li>
-  <li>[2024-02-05] <b>X Garcia</b>:                   Web estudiant (mapa d'accions de recerca al mapa de Catalunya). Fer servir "my maps" de google + codi embed.</li>
+  <!--tasques en cua-->
+  <li>[2023-12-12] <b>etornés</b>:                    Reconcilació base de dades omnidia (deadline: abril24)</li>
+  <li wip>[2023-12-13] <b>mfarré, mcelic, fzafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)</li>
+  <li>[2023-12-15] <b>lcorominas</b>:                 Ecovat crear prototip aparell innowatt</li>
+  <li>[2023-12-20] <b>lcorominas</b>:                 Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
+  <li>[2024-01-10] <b>ollorente</b>:                  Dubtes web colab icra + basquet-girona</li>
+  <li>[2024-01-10] <b>nros</b>:                       Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom.</li>
+  <li wip>[2024-01-11] <b>ogutierrez</b>:             Recollir ordinador Fontajau i tractament de dades 2023 any sencer (optimizació potències)</li>
+  <li wip>[2024-01-17] <b>apico</b>:                  Cluster: instalar megan6 [ok]. Arreglar error dconf</li>
+  <li wip>[2024-01-23] <b>lcorominas</b>:             Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>) [prioritatri lcorominas]</li>
+  <li>[2024-01-23] <b>gbuttiglieri, mriva</b>:        Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)</li>
+  <li wip>[2024-01-24] <b>jbalcazar</b>:              Cluster: instalar cutadapt, spades, skesa, pgap, quast. Falta només "pgap"</li>
+  <li wip>[2024-01-24] <b>sbusquets, ljaurrieta</b>:  Dubtes i suport modificació web 4sm (<a href="//4sm.icradev.cat">4sm.icradev.cat</a>)</li>
+  <li>[2024-01-29] <b>ogutierrez, lcorominas</b>:     Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
+  <li>[2024-01-29] <b>lcorominas, lbosch</b>:         Traduir paquet innowatt (protocol lectura comptadors) a python3 (de python2)</li>
+  <li>[2024-02-05] <b>xgarcia</b>:                    Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.</li>
+  <li>[2024-02-12] <b>isanchez</b>:                   Segmentació per aparell consum elèctric edifici H2O</li>
+  <li wip>[2024-02-13] <b>asanchis</b>:               Ajuda automatizació scripts shell (bash) cluster</li>
+  <li wip>[2024-02-14] <b>jluque</b>:                 Eina web per ajuntar 2 excels amb columna en comú</li>
 </ul>
-
-<script>
-  //mostrar/amagar tasques completades
-  function toggle_tasques_completades(){
-    if(this.veure==undefined) this.veure=false;
-    this.veure^=1;
-    let lis = document.querySelectorAll("li[ok]");
-    lis.forEach(li=>{
-      if(this.veure){
-        li.setAttribute("visible","");
-      }else{
-        li.removeAttribute("visible");
-      }
-    });
-  }
-
-  //llegeix data d'última modificació fitxer "index.html"
-  fetch("api.php").then(r=>r.text()).then(txt=>{
-    document.querySelector("#indexhtmlfilemtime").innerHTML=txt;
-  });
-</script>
