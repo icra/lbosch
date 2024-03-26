@@ -1,5 +1,5 @@
-default:
-	#git
+git_push_and_deploy:
+	#git: add, commit and push
 	git add *
 	git commit -am 'update'
 	git push
