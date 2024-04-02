@@ -30,47 +30,47 @@
     ul#tasques li{
       border-bottom:1px solid #ccc;
     }
-    ul#tasques > li:before{
+    ul#tasques li:before{
       content:'[TODO]';
+      font-weight:bold;
+      margin-right:5px;
     }
-    ul#tasques > li[ok]{
+    ul#tasques > li[comp]{
       display:none;
     }
-    ul#tasques li[ok]:before{
+    ul#tasques li[comp]:before{
       content:' [COMP]';
       background:#ddd;
-      font-weight:bold;
     }
-    ul#tasques li[ok][visible]{
-      display:list-item;
-    }
-    ul#tasques li[pri]:before{
+    ul#tasques li[prio]:before{
       content:'[PRIO]';
       background:lightgreen;
     }
-    ul#tasques li[wip]:before{
+    ul#tasques li[wipr]:before{
       content:'[WIPR]';
       background:orange;
+    }
+    ul#tasques li[wait]:before{
+      content:'[WAIT]';
+      background:pink;
     }
     #indexhtmlfilemtime{
       background:#ddd;
     }
-  </style>
-  <script>
-    //mostrar/amagar tasques completades
-    function toggle_tasques_completades(){
-      if(this.veure==undefined) this.veure=false;
-      this.veure^=1;
-      let lis = document.querySelectorAll("li[ok]");
-      lis.forEach(li=>{
-        if(this.veure){
-          li.setAttribute("visible","");
-        }else{
-          li.removeAttribute("visible");
-        }
-      });
+    #llegenda span{
+      cursor:pointer;
+      display:inline-block;
+      padding:0.618em 1em;
+      border:1px solid #ccc;
+      border-radius:5px;
     }
+    #llegenda span:hover{
+      border:1px solid black;
+      box-shadow:1px 1px 5px #ccc;
+    }
+  </style>
 
+  <script>
     //llegeix data d'última modificació fitxer "index.html"
     window.onload = function(){
       fetch("api.php").then(r=>r.text()).then(txt=>{
@@ -117,74 +117,71 @@
       align-items:center;
     "
   >
-    <div style="margin-right:5px">
-      <button onclick="toggle_tasques_completades()">
-        ENG: See/hide completed tasks |
-        CAT: Veure/amagar tasques completades
-      </button>
-    </div>
     <div>
       <code>Tasks updated: <code id=indexhtmlfilemtime>...</code></code>
     </div>
   </div><hr>
+
   <!--llegenda-->
   <div
+    id=llegenda
     style="
       font-size:smaller;
     "
   >
-    <b>Llegenda</b>:
-    <span style="background:lightgreen">[PRIO] tasca prioritària</span>
-    <span style="background:orange">[WIPR] tasca en procés</span>
-    <span style="background:">[TODO] tasca pendent</span>
-    <span style="background:#ddd">[COMP] tasca completada</span>
+    <b style="font-size:larger">Status tasques</b>:
+    <span onclick="filtre_tasques('todo')" style="background:">          [TODO] pendents</span>
+    <span onclick="filtre_tasques('comp')" style="background:#ddd">      [COMP] completades</span>
+    <span onclick="filtre_tasques('prio')" style="background:lightgreen">[PRIO] prioritàries</span>
+    <span onclick="filtre_tasques('wipr')" style="background:orange">    [WIPR] en procés</span>
+    <span onclick="filtre_tasques('wait')" style="background:pink">      [WAIT] esperant feina d'algú altre</span>
   </div><hr>
 </div>
 
 <!--llista tasques-->
 <ul id=tasques>
   <!--tasques acabades-->
-    <li ok>[2023-12-14] <b>sbusquets, lcorominas</b>: Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
-    <li ok>[2024-01-03] <b>isanchez</b>:              Modificació web consum-electric.icradev.cat</li>
-    <li ok>[2024-01-12] <b>lcorominas</b>:            Article PCA</li>
-    <li ok>[2024-01-14] <b>jcuenca (SIE)</b>:         Cluster: arreglar node compute-12</li>
-    <li ok>[2024-01-17] <b>osacristan</b>:            R Venn diagrams ajuda amb el codi plot abundància relativa</li>
-    <li ok>[2024-01-29] <b>lguerrero</b>:             Release dades públiques (github i zenodo) xarxa vigilància SARSAIGUA (<a href="//github.com/icra/sars-aigues">github.com/icra/sars-aigues</a>)</li>
-    <li ok>[2024-01-10] <b>ollorente</b>:             Dubtes web colab icra + basquet-girona</li>
-    <li ok>[2024-02-01] <b>jlbalcazar</b>:            Suport usuari cluster pcolman</li>
-    <li ok>[2024-02-20] <b>aaranda</b>:               Instal·lar al cluster:
+    <li comp>[2023-12-14] <b>sbusquets, lcorominas</b>: Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
+    <li comp>[2024-01-03] <b>isanchez</b>:              Modificació web consum-electric.icradev.cat</li>
+    <li comp>[2024-01-12] <b>lcorominas</b>:            Article PCA</li>
+    <li comp>[2024-01-14] <b>jcuenca (SIE)</b>:         Cluster: arreglar node compute-12</li>
+    <li comp>[2024-01-17] <b>osacristan</b>:            R Venn diagrams ajuda amb el codi plot abundància relativa</li>
+    <li comp>[2024-01-29] <b>lguerrero</b>:             Release dades públiques (github i zenodo) xarxa vigilància SARSAIGUA (<a href="//github.com/icra/sars-aigues">github.com/icra/sars-aigues</a>)</li>
+    <li comp>[2024-01-10] <b>ollorente</b>:             Dubtes web colab icra + basquet-girona</li>
+    <li comp>[2024-02-01] <b>jlbalcazar</b>:            Suport usuari cluster pcolman</li>
+    <li comp>[2024-02-20] <b>aaranda</b>:               Instal·lar al cluster:
       <ul>
-        <li ok>SRA Toolkit (NCBI)
-        <li ok>BWA-MEM
-        <li ok>STAR
-        <li ok>SAMTools
-        <li ok>HTSeq
-        <li ok>DeSeq
-        <li ok>FastQC i MultiQC
+        <li comp>SRA Toolkit (NCBI)
+        <li comp>BWA-MEM
+        <li comp>STAR
+        <li comp>SAMTools
+        <li comp>HTSeq
+        <li comp>DeSeq
+        <li comp>FastQC i MultiQC
       </ul>
     </li>
-    <li ok>[2024-01-23] <b>lcorominas</b>: Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
-    <li ok>[2024-02-14] <b>jluque</b>:     Eina web per ajuntar 2 excels amb columna en comú</li>
-    <li ok>[2023-12-12] <b>etornés</b>:    Reconcilació base de dades omnidia (deadline: abril24)</li>
-    <li ok>[2024-03-01] <b>rdiaz</b>:      Ajuda muntatge node nou cluster</li>
-    <li ok>[2024-03-01] <b>rdiaz</b>:      Allotjar web antiga icra al cluster</li>
-    <li ok>[2024-03-07] <b>ssabater, etornés</b>: Compta les hores que has dedicat a fer això de les diatomees, per fer la factura, quan puguis, no hi ha pressa, encara no he acabat la meva part</li>
-    <li ok>[2024-03-08] <b>pgimenez, xgarcia</b>: Afegir contingut TV hall icra</li>
-    <li ok>[2024-03-14] <b>jlbalcazar</b>: Instalar R-bioconductor al cluster</li>
-    <li ok>[2024-03-13] <b>vrocasalva</b>: <a href="//riskassessment.icradev.cat">riskassessment.icradev.cat</a> error al codi BUGFIX</li>
-    <li ok>[2024-03-26] <b>mrescan</b>: crear container amb els programes fastqc i trimmomatic (java tots dos)</li>
+    <li comp>[2024-01-23] <b>lcorominas</b>: Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
+    <li comp>[2024-02-14] <b>jluque</b>:     Eina web per ajuntar 2 excels amb columna en comú</li>
+    <li comp>[2023-12-12] <b>etornés</b>:    Reconcilació base de dades omnidia (deadline: abril24)</li>
+    <li comp>[2024-03-01] <b>rdiaz</b>:      Ajuda muntatge node nou cluster</li>
+    <li comp>[2024-03-01] <b>rdiaz</b>:      Allotjar web antiga icra al cluster</li>
+    <li comp>[2024-03-07] <b>ssabater, etornés</b>: Compta les hores que has dedicat a fer això de les diatomees, per fer la factura, quan puguis, no hi ha pressa, encara no he acabat la meva part</li>
+    <li comp>[2024-03-08] <b>pgimenez, xgarcia</b>: Afegir contingut TV hall icra</li>
+    <li comp>[2024-03-14] <b>jlbalcazar</b>: Instalar R-bioconductor al cluster</li>
+    <li comp>[2024-03-13] <b>vrocasalva</b>: <a href="//riskassessment.icradev.cat">riskassessment.icradev.cat</a> error al codi BUGFIX</li>
+    <li comp>[2024-03-26] <b>mrescan</b>: crear container amb els programes fastqc i trimmomatic (java tots dos)</li>
   <!---->
 
   <!--tasca actual-->
-    <li pri>[2023-12-11] <b>pgimenez, vacuña</b>: mesocosmos
+    <li prio>[2023-12-11] <b>pgimenez, vacuña</b>: mesocosmos
       <a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>
       <ul>
-        <li wip>Base de dades FTP (ok, falta comprovar automatització)</li>
-        <li wip>Interfície web nova (funciona engegar i parar aparells, falta dissenyar sistema de receptes automàtiques)</li>
+        <li wipr>Base de dades FTP (ok, falta comprovar automatització)</li>
+        <li wipr>Interfície web nova (funciona engegar i parar aparells, falta dissenyar sistema de receptes automàtiques)</li>
         <li>comentar amb afreixa</li>
       </ul>
     </li>
-    <li pri>[2023-12-13] <b>mfarré, mcelic, fzafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)
+    <li prio>[2023-12-13] <b>mfarré, mcelic, fzafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)
       <ul>
         <li>[2024-01-10] <b>nros</b>:      Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom.</li>
         <li>[2024-02-19] <b>apedregal</b>: Ajuda análisis estadístic (data.csv i pdf explicació mail)</li>
@@ -199,49 +196,97 @@
   <!--tasques pendents-->
     <li>[2023-12-15] <b>lcorominas</b>: Ecovat crear prototip aparell innowatt</li>
     <li>[2023-12-20] <b>lcorominas</b>: Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
-    <li wip>[2024-01-11] <b>ogutierrez</b>:
+    <li wait>[2024-01-11] <b>ogutierrez</b>:
       <ul>
-        <li ok>Recollir ordinador Fontajau</li>
-        <li>Tractament de dades 2023 any sencer (optimizació potències)</li>
-        <li>status: esperant documents pdf xavier agustí (ajuntament girona)</li>
+        <li comp>Recollir ordinador Fontajau</li>
+        <li wait>Tractament de dades 2023 any sencer (optimizació potències)</li>
+        <li wait>rebre documents pdf xavier agustí (ajuntament girona)</li>
       </ul>
     </li>
-    <li wip>[2024-01-17] <b>apico</b>:                 Cluster: instalar megan6 [ok]. Mirar error "dconf"</li>
-    <li>[2024-01-23] <b>gbuttiglieri, mriva</b>:       Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)</li>
-    <li wip>[2024-01-24] <b>jlbalcazar</b>: Cluster instalar (/home/pipelines/ubuntu_*):
+    <li wipr>[2024-01-17] <b>apico</b>:                 Cluster: instalar megan6 [ok]. Mirar error "dconf"</li>
+    <li wait>[2024-01-23] <b>gbuttiglieri, mriva</b>:
+      Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)
       <ul>
-        <li ok>cutadapt
-        <li ok>spades
-        <li ok>skesa
+        <li comp>sim changed</li>
+        <li comp>internet working in router</li>
+        <li >static ip sim card</li>
+        <li >port forwarding sim card</li>
+      </ul>
+    </li>
+    <li wipr>[2024-01-24] <b>jlbalcazar</b>: Cluster instalar (/home/pipelines/ubuntu_*):
+      <ul>
+        <li comp>cutadapt
+        <li comp>spades
+        <li comp>skesa
         <li>pgap (falta només aquest, falta trobar documentació)
-        <li ok>quast
+        <li comp>quast
       </ul>
     </li>
-    <li wip>[2024-01-24] <b>sbusquets, ljaurrieta</b>: Suport modificació web 4sm (<a href="//4sm.icradev.cat">4sm.icradev.cat</a>)</li>
+    <li wipr>[2024-01-24] <b>sbusquets, ljaurrieta</b>: Suport modificació web 4sm (<a href="//4sm.icradev.cat">4sm.icradev.cat</a>)</li>
+
     <li>[2024-01-29] <b>ogutierrez, lcorominas</b>:    Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
     <li>[2024-01-29] <b>lcorominas</b>:                Traduir paquet innowatt (protocol lectura comptadors) de py2 a py3</li>
-    <li>[2024-02-05] <b>xgarcia</b>:                   Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.</li>
-    <li>[2024-02-12] <b>isanchez</b>:                  Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
+
+    <li wait>[2024-02-05] <b>xgarcia</b>:              Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.</li>
+    <li wait>[2024-02-12] <b>isanchez</b>:             Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
       <ul>
         <li>Reunió amb DSET + Eduard (parc manteniment)
         <li>Carpeta "htdocs/segmentacio-kwh". Provar llibreria knx (npm install knx) (<a href="//npmjs.com/package/knx">npmjs.com/package/knx</a>)
+        <li wait>esperant reunió dia 3 Abr
       </ul>
     </li>
-    <li wip>[2024-02-13] <b>asanchis</b>:           Ajuda programació scripts shell (bash) cluster (blast,mummer,etc)</li>
-    <li>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)</li>
-    <li>[2024-03-13] <b>nklamerth</b>:              Usuari + programes cluster ("sirius" + "ms-novelist")</li>
-    <li>[2024-03-13] <b>asegues, mpijuan</b>:       Programació electrovalvula + bomba (arduinos)
+    <li wait>[2024-02-13] <b>asanchis</b>:           Ajuda programació scripts shell (bash) cluster (blast, mummer, etc)</li>
+    <li wipr>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)</li>
+    <li wait>[2024-03-13] <b>nklamerth</b>:              Usuari + programes cluster ("sirius" + "ms-novelist")</li>
+    <li wait>[2024-03-13] <b>asegues, mpijuan</b>:       Programació electrovalvula + bomba (arduinos)
       <ul>
         <li>comprar Relé de 220V-AC, 30V-DC, activable amb senyal de 5V
         <li>o bé comprar transistor MOSFET de 24V, activable amb senyal de 5V
         <li>trobada botiga a girona (BTS electrònica, Carrer de Valladolid, 7, 17005 Girona)
+        <li wait>status: asegues diu comprarà peces (2024-04-02)
       </ul>
     </li>
     <li>[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
       <ul>
-        <li>Comentar amb rdiaz i vacuña</li>
+        <li wait>Comentar amb rdiaz</li>
+        <li>Comentar amb vacuña</li>
       </ul>
     </li>
-    <li>[2024-03-26] <b>lbosch</b>: implementar status: "esperant" per quan algú m'ha d'enviar algo sense el qual no puc seguir la tasca</li>
   <!---->
 </ul>
+
+<script>
+  let classes_tasques=[
+    "todo",
+    "comp",
+    "prio",
+    "wipr",
+    "wait",
+  ];
+  function filtre_tasques(tipus){
+    if(classes_tasques.includes(tipus)==false){
+      return false;
+    }
+
+    //oculta totes les tasques
+    document.querySelectorAll(`ul#tasques > li`).forEach(li=>{
+      li.style.display="none";
+    });
+
+    //mostra totes les tasques
+    if(tipus=="todo"){
+      document.querySelectorAll(`ul#tasques > li`).forEach(li=>{
+        li.style.display="list-item";
+      });
+      document.querySelectorAll(`ul#tasques > li[comp]`).forEach(li=>{
+        li.style.display="none";
+      });
+      return
+    }
+
+    //mostra les tipus != "todo"
+    document.querySelectorAll(`ul#tasques > li[${tipus}]`).forEach(li=>{
+      li.style.display="list-item";
+    });
+  }
+</script>
