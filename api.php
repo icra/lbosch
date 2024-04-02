@@ -3,6 +3,7 @@
     $time_ago = strtotime($time);
     $cur_time = time();
     $time_elapsed = $cur_time - $time_ago;
+
     $seconds    = $time_elapsed ;
     $minutes    = round($time_elapsed / 60 );
     $hours      = round($time_elapsed / 3600);
@@ -11,7 +12,6 @@
     $months     = round($time_elapsed / 2600640 );
     $years      = round($time_elapsed / 31207680 );
 
-    //futur
     if($seconds<0){
       return "future";
     }else if($seconds <= 60){
