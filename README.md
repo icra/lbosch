@@ -2,6 +2,8 @@ https://lbosch.icradev.cat
 
 Lluís Bosch, ICRA Research Support Computer Scientist
 
+List of tasks / requests
+
 <ul>
   <li>Assistance in programming.
   <li>Automation of tasks.
