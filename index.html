@@ -78,11 +78,12 @@
 
   <script>
     let classes_tasques=[
-      "todo",
-      "comp",
-      "prio",
-      "wipr",
-      "wait",
+      "totes",
+      "todo", //<li>
+      "comp", //<li comp>
+      "prio", //<li prio>
+      "wipr", //<li wipr>
+      "wait", //<li wait>
     ];
     function filtre_tasques(tipus){
       if(classes_tasques.includes(tipus)==false){
@@ -94,18 +95,33 @@
         li.style.display="none";
       });
 
-      //mostra totes les tasques
-      if(tipus=="todo"){
+      //mostra totes
+      if(tipus=="totes"){
         document.querySelectorAll(`ul#tasques > li`).forEach(li=>{
           li.style.display="list-item";
         });
         document.querySelectorAll(`ul#tasques > li[comp]`).forEach(li=>{
           li.style.display="none";
         });
-        return
+        return;
       }
 
-      //mostra les tipus != "todo"
+      //mostra totes
+      if(tipus=="todo"){
+        document.querySelectorAll(`ul#tasques > li`).forEach(li=>{
+          li.style.display="list-item";
+        });
+
+        classes_tasques.forEach(attr=>{
+          document.querySelectorAll(`ul#tasques > li[${attr}]`).forEach(li=>{
+            li.style.display="none";
+          });
+        });
+
+        return;
+      }
+
+      //mostra
       document.querySelectorAll(`ul#tasques > li[${tipus}]`).forEach(li=>{
         li.style.display="list-item";
       });
@@ -172,11 +188,13 @@
     "
   >
     <b style="font-size:larger">Status tasques</b>:
-    <span onclick="filtre_tasques('todo')" style="background:">          [TODO] pendents</span>
-    <span onclick="filtre_tasques('comp')" style="background:#ddd">      [COMP] completades</span>
+    <span onclick="filtre_tasques('totes')" style="background:">         totes</span>
+
+    <span onclick="filtre_tasques('todo')" style="background:">          [TODO] pendents (no començades)</span>
     <span onclick="filtre_tasques('prio')" style="background:lightgreen">[PRIO] prioritàries</span>
     <span onclick="filtre_tasques('wipr')" style="background:orange">    [WIPR] en procés</span>
     <span onclick="filtre_tasques('wait')" style="background:pink">      [WAIT] esperant feina d'algú altre</span>
+    <span onclick="filtre_tasques('comp')" style="background:#ddd">      [COMP] completades</span>
   </div><hr>
 </div>
 
@@ -227,7 +245,7 @@
         <li>comentar amb afreixa</li>
       </ul>
     </li>
-    <li prio>[2023-12-13] <b>mfarré, mcelic, fzafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)
+    <li wipr>[2023-12-13] <b>mfarré, mcelic, fzafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)
       <ul>
         <li>[2024-01-10] <b>nros</b>:      Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom.</li>
         <li>[2024-02-19] <b>apedregal</b>: Ajuda análisis estadístic (data.csv i pdf explicació mail)</li>
@@ -241,6 +259,10 @@
     <li prio>
       [2024-04-05] <b>lcorominas</b>: comentaris revisors article PCA
       <b deadline>deadline: 2024-04-29</b>
+      <ul>
+        <li>Canviar part interpolació
+        <li>Fer GIF animat amb grafic temporal amb: N1, alarmes i llindars
+      </ul>
     </li>
     <li>[2023-12-15] <b>lcorominas</b>: Ecovat crear prototip aparell innowatt</li>
     <li>[2023-12-20] <b>lcorominas</b>: Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
@@ -251,7 +273,7 @@
         <li wait>rebre documents pdf xavier agustí (ajuntament girona)</li>
       </ul>
     </li>
-    <li wait>[2024-01-23] <b>gbuttiglieri, mriva</b>:
+    <li wipr>[2024-01-23] <b>gbuttiglieri, mriva</b>:
       Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)
       <ul>
         <li comp>sim changed</li>
@@ -260,7 +282,7 @@
           <ul>
             <li comp>dynamic dns configuration</li>
             <li>get public ip through NAT</li>
-            <li wait>esperar resposta rdiaz consulta sobre NAT</li>
+            <li wipr>contractar ip fixa
           </ul>
         </li>
       </ul>
@@ -281,17 +303,17 @@
       </ul>
     </li>
 
-    <li>[2024-01-29] <b>ogutierrez, lcorominas</b>:    Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
-    <li>[2024-01-29] <b>lcorominas</b>:                Traduir paquet innowatt (protocol lectura comptadors) de py2 a py3</li>
+    <li>[2024-01-29] <b>ogutierrez, lcorominas</b>: Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
+    <li>[2024-01-29] <b>lcorominas</b>: Traduir paquet innowatt (protocol lectura comptadors) de py2 a py3</li>
 
-    <li wait>[2024-02-05] <b>xgarcia</b>:              Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.</li>
-    <li wait>[2024-02-12] <b>isanchez</b>:             Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
+    <li wait>[2024-02-05] <b>xgarcia</b>: Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.</li>
+    <li wait>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
       <ul>
         <li>Reunió amb DSET + Eduard (parc manteniment)
         <li>Carpeta "htdocs/segmentacio-kwh". Provar llibreria knx (npm install knx) (<a href="//npmjs.com/package/knx">npmjs.com/package/knx</a>)
         <li comp>reunió dia 3 Abr
         <li wait>esperar dvila(DSET) i eduard(PARC) executin segons el parlat a la reunió
-        <li wait>reunió 10ABR isanchez+eduard
+        <li comp>reunió 10ABR isanchez+eduard
       </ul>
     </li>
     <li wait>[2024-02-13] <b>asanchis</b>:               Ajuda programació scripts shell (bash) cluster (blast, mummer, etc)</li>
@@ -306,7 +328,7 @@
     </li>
     <li>[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
       <ul>
-        <li wait>Comentar amb rdiaz</li>
+        <li comp>Comentar amb rdiaz</li>
         <li>Comentar amb vacuña</li>
       </ul>
     </li>
@@ -314,10 +336,19 @@
       [2024-04-03] <b>lcorominas</b>: projecte wotter, compilar model janick i
       visualitzador jsalo en una web.
     </li>
-    <li wait>
+    <li wipr>
       [2024-04-16] <b>apedregal, dmercado</b>: compilar fitxers CS en container al cluster + instalar R, python i jupyter
       <ul>
-        <li wait>apedregal contacta autors per compilar només app de terminal</li>
+        <li comp>apedregal contacta autors per compilar només app de terminal</li>
+        <li comp>els autors responen que no enviaran el codi
+        <li comp>[2024-04-19] singularity pull docker://mtapiio/wine8 funciona
+        <li wipr>[2024-04-19] instalar dins del cluster
+      </ul>
+    </li>
+    <li wait>
+      [2024-04-19] paret verda icra
+      <ul>
+        <li>Reunió concretar dia
       </ul>
     </li>
   <!--/todo-->
