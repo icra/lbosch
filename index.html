@@ -225,10 +225,11 @@
     <li comp>[2024-03-13] <b>vrocasalva</b>: <a href="//riskassessment.icradev.cat">riskassessment.icradev.cat</a> error al codi BUGFIX</li>
     <li comp>[2024-03-26] <b>mrescan</b>: crear container amb els programes fastqc i trimmomatic (java tots dos)</li>
     <li comp>[2024-01-17] <b>apico</b>: Cluster: instalar megan6 [ok]. Mirar error "dconf"</li>
-    <li comp>[2024-03-13] <b>nklamerth</b>:              Usuari + programes cluster ("sirius" + "ms-novelist")</li>
+    <li comp>[2024-03-13] <b>nklamerth</b>: Usuari + programes cluster ("sirius" + "ms-novelist")</li>
     <li comp>[2024-04-16] <b>jortiz</b>: ajuda amb comandes cluster (qiime i biom)</li>
     <li comp>[2024-04-16] <b>clemente abm</b>: carregar 3 nous fitxers 3d a la web (deflector, wetland, tanc etiquetes)</li>
     <li comp>[2023-04-25] <b>rdiaz</b> update doc cluster sharepoint (https://ficra.sharepoint.com/sites/ICRA-IT2/SitePages/ICRA-HPC.aspx)</li>
+    <li comp>[2024-02-13] <b>asanchis</b>: Ajuda programació scripts shell (bash) cluster (blast, mummer, etc)</li>
   <!--/comp-->
 
   <!--tasques pendents-->
@@ -251,9 +252,8 @@
         <li>comentar plataforma anova amb vicenç per fer difusió/seminari a icra</li>
       </ul>
     </li>
-    <li prio>
-      [2024-04-05] <b>lcorominas</b>: comentaris revisors article PCA
-      <b deadline>deadline: 2024-04-29</b>
+    <li prio>[2024-04-05] <b>lcorominas</b>: comentaris revisors article PCA
+      <b deadline>deadline: 2024-05-03</b>
       <ul>
         <li>Canviar part interpolació
         <li>Fer GIF animat amb grafic temporal amb: N1, alarmes i llindars
@@ -312,15 +312,19 @@
         <li comp>reunió 10ABR isanchez+eduard
       </ul>
     </li>
-    <li wait>[2024-02-13] <b>asanchis</b>:               Ajuda programació scripts shell (bash) cluster (blast, mummer, etc)</li>
-    <li wipr>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)</li>
-    <li>[2024-03-13] <b>asegues, mpijuan</b>:       Programació electrovalvula + bomba (arduinos)
+    <li wipr>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
       <ul>
-        <li>comprar Relé de 220V-AC, 30V-DC, activable amb senyal de 5V
-        <li>o bé comprar transistor MOSFET de 24V, activable amb senyal de 5V
-        <li>trobada botiga a girona (BTS electrònica, Carrer de Valladolid, 7, 17005 Girona)
+        <li wipr>falta pensar com fer tema DNS per login investigadors ICRA
+        <li >provar ssh tunel (-L)
+      </ul>
+    </li>
+    <li wipr>[2024-03-13] <b>asegues, mpijuan</b>:       Programació electrovalvula + bomba (arduinos)
+      <ul>
+        <li comp>comprar Relé de 220V-AC, 30V-DC, activable amb senyal de 5V
+        <li comp>o bé comprar transistor MOSFET de 24V, activable amb senyal de 5V
+        <li comp>trobada botiga a girona (BTS electrònica, Carrer de Valladolid, 7, 17005 Girona)
         <li comp>status: asegues diu comprarà peces (2024-04-02)
-        <li>quedar per mirar peces
+        <li wait>quedar per mirar peces
       </ul>
     </li>
     <li>[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
@@ -333,23 +337,32 @@
       [2024-04-03] <b>lcorominas</b>: projecte wotter, compilar model janick i
       visualitzador jsalo en una web.
     </li>
-    <li wipr>
-      [2024-04-16] <b>apedregal, dmercado</b>: compilar fitxers CS en container al cluster + instalar R, python i jupyter
+    <li wipr>[2024-04-16] <b>apedregal, dmercado</b>: compilar fitxers CS en container al cluster + instalar R, python i jupyter
       <ul>
         <li comp>apedregal contacta autors per compilar només app de terminal</li>
         <li comp>els autors responen que no enviaran el codi
         <li comp>[2024-04-19] singularity pull docker://mtapiio/wine8 funciona
-        <li wipr>[2024-04-19] instalar dins del cluster
+        <li comp>[2024-04-19] instalar dins del cluster
+        <li wait>[2024-04-25] apedregal i dmercado fan proves i em diuen algo
       </ul>
     </li>
     <li wait>
       [2024-04-19] paret verda icra
       <ul>
-        <li wait>Reunió 26ABR 9h (jcomas, isegirona, lbosch) a icra
+        <li comp>Reunió 26ABR 9h (jcomas, isegirona, lbosch) a icra
+        <li wait>reagendar reunió esperar ise girona
       </ul>
     </li>
-    <li wipr>[2024-04-24] <b>cgutierrez</b> pts.icradev.cat</li>
-    <li wipr>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS (14 noves)</li>
+    <li wipr>[2024-04-24] <b>cgutierrez</b> pts.icradev.cat
+      <ul>
+        <li wait>reunió 6MAI amb pts per dissenyar web
+      </ul>
+    </li>
+    <li wipr>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS (14 noves)
+      <ul>
+        <li wait>falta confirmar el "Naphrax" (https://riskassessment.icradev.cat/fitxes/documents/renamed/FDS-706.pdf)
+      </ul>
+    </li>
     <li>
       [2024-04-26] <b>rdiaz</b> parar nodes antics cluster (compute-{00..11})
     </li>
