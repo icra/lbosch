@@ -27,7 +27,9 @@
     ul#tasques {
       padding-left:20px;
     }
-    ul#tasques li{
+    ul#tasques > li{
+      padding-bottom:4px;
+      margin-bottom:4px;
       border-bottom:1px solid #ccc;
     }
     ul#tasques li:before{
@@ -55,7 +57,11 @@
       background:pink;
     }
     #indexhtmlfilemtime{
-      background:#ddd;
+      display:inline-block;
+      padding:0.618em 1.618em;
+      background:royalblue;
+      color:white;
+      border-radius:6px;
     }
     #llegenda span{
       cursor:pointer;
@@ -257,7 +263,8 @@
       <ul>
         <li comp>Canviar part interpolació
         <li comp>Calcular llindras a 5% i 1% per tenir tres franjes (verd, groc, vermell)
-        <li prio>Fer diccionari de scores per data on cada data és una pca diferent</li>
+        <li comp>Fer diccionari de scores per data on cada data és una pca diferent
+        <li wait>[2024-04-29] josep graficarà amb R segons JSON enviat
       </ul>
     </li>
     <li>[2023-12-15] <b>lcorominas</b>: Ecovat crear prototip aparell innowatt</li>
@@ -269,7 +276,7 @@
         <li wait>rebre documents pdf xavier agustí (ajuntament girona)</li>
       </ul>
     </li>
-    <li wipr>[2024-01-23] <b>gbuttiglieri, mriva</b>:
+    <li wait>[2024-01-23] <b>gbuttiglieri, mriva</b>:
       Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)
       <ul>
         <li comp>sim changed</li>
@@ -278,7 +285,7 @@
           <ul>
             <li comp>dynamic dns configuration</li>
             <li>get public ip through NAT</li>
-            <li wipr>contractar ip fixa
+            <li wait>contractar ip fixa (mriva contacta amb agència catalana habitatge, esperant resposta)
           </ul>
         </li>
       </ul>
@@ -288,7 +295,11 @@
         <li comp>cutadapt
         <li comp>spades
         <li comp>skesa
-        <li>pgap (falta només aquest, falta trobar documentació)
+        <li wipr>pgap
+          <ul>
+            <li>comprovar container (docker://ncbi/pgap_2023-10-03.build7061)
+          </ul>
+        </li>
         <li comp>quast
       </ul>
     </li>
@@ -302,20 +313,27 @@
     <li>[2024-01-29] <b>ogutierrez, lcorominas</b>: Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
     <li>[2024-01-29] <b>lcorominas</b>: Traduir paquet innowatt (protocol lectura comptadors) de py2 a py3</li>
 
-    <li wait>[2024-02-05] <b>xgarcia</b>: Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.</li>
+    <li wait>[2024-02-05] <b>xgarcia</b>: Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.
+      <ul>
+        <li wait>esperar xavi demani ajuda i/o preguntar status
+      </ul>
+    </li>
     <li wait>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
       <ul>
         <li>Reunió amb DSET + Eduard (parc manteniment)
         <li>Carpeta "htdocs/segmentacio-kwh". Provar llibreria knx (npm install knx) (<a href="//npmjs.com/package/knx">npmjs.com/package/knx</a>)
         <li comp>reunió dia 3 Abr
-        <li wait>esperar dvila(DSET) i eduard(PARC) executin segons el parlat a la reunió
         <li comp>reunió 10ABR isanchez+eduard
+        <li wait>esperar dvila(DSET) i eduard(PARC) executin segons el parlat a la reunió
       </ul>
     </li>
     <li wipr>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
       <ul>
         <li wipr>falta pensar com fer tema DNS per login investigadors ICRA
-        <li >provar ssh tunel (-L)
+          <ul>
+            <li>provar ssh tunel (-L)
+          </ul>
+        </li>
       </ul>
     </li>
     <li wipr>[2024-03-13] <b>asegues, mpijuan</b>:       Programació electrovalvula + bomba (arduinos)
@@ -324,7 +342,7 @@
         <li comp>o bé comprar transistor MOSFET de 24V, activable amb senyal de 5V
         <li comp>trobada botiga a girona (BTS electrònica, Carrer de Valladolid, 7, 17005 Girona)
         <li comp>status: asegues diu comprarà peces (2024-04-02)
-        <li wait>quedar per mirar peces
+        <li wait>quedar per mirar peces 6MAI
       </ul>
     </li>
     <li>[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
@@ -337,7 +355,7 @@
       [2024-04-03] <b>lcorominas</b>: projecte wotter, compilar model janick i
       visualitzador jsalo en una web.
     </li>
-    <li wipr>[2024-04-16] <b>apedregal, dmercado</b>: compilar fitxers CS en container al cluster + instalar R, python i jupyter
+    <li wait>[2024-04-16] <b>apedregal, dmercado</b>: compilar fitxers CS en container al cluster + instalar R, python i jupyter
       <ul>
         <li comp>apedregal contacta autors per compilar només app de terminal</li>
         <li comp>els autors responen que no enviaran el codi
@@ -358,9 +376,12 @@
         <li wait>reunió 6MAI amb pts per dissenyar web
       </ul>
     </li>
-    <li wipr>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS (14 noves)
+    <li wait>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS (14 noves)
       <ul>
-        <li wait>falta confirmar el "Naphrax" (https://riskassessment.icradev.cat/fitxes/documents/renamed/FDS-706.pdf)
+        <li wait>
+          (lide mirarà)
+          falta confirmar el "Naphrax" (https://riskassessment.icradev.cat/fitxes/documents/renamed/FDS-706.pdf)
+        </li>
       </ul>
     </li>
     <li>
