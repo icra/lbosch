@@ -4,8 +4,10 @@
   <style>
     body{
       font-family:monospace;
+      overflow-y:scroll;
     }
     summary{
+      font-weight:bolder;
       cursor:pointer;
     }
     summary:hover{
@@ -58,15 +60,12 @@
       background:pink;
     }
     #indexhtmlfilemtime{
-      display:inline-block;
-      padding:0.618em 1em;
-      background:royalblue;
-      color:white;
-      border-radius:6px;
+      font-weight:bold;
     }
     #llegenda span{
       cursor:pointer;
       display:inline-block;
+      margin:-2px;
       padding:0.618em 1em;
       border:1px solid #ccc;
       border-radius:5px;
@@ -176,217 +175,242 @@
       </div>
     </details>
   </div><hr>
-  <div
-    style="
-      display:flex;
-      align-items:center;
-    "
-  >
-    <div style="font-weight:bold">
-      <code>Tasks updated: <code id=indexhtmlfilemtime>...</code></code>
-    </div>
-  </div><hr>
 
-  <!--llegenda-->
-  <div id=llegenda style="font-size:smaller;">
-    <b style="font-size:larger">Task status filter</b>:
-    <span onclick="filtre_tasques('totes')" style="background:">         totes</span>
-    <span onclick="filtre_tasques('todo')" style="background:">          [TODO] pendents (no començades)</span>
-    <span onclick="filtre_tasques('prio')" style="background:lightgreen">[PRIO] prioritàries</span>
-    <span onclick="filtre_tasques('wipr')" style="background:orange">    [WIPR] en procés</span>
-    <span onclick="filtre_tasques('wait')" style="background:pink">      [WAIT] esperant feina d'algú altre</span>
-    <span onclick="filtre_tasques('comp')" style="background:#ddd">      [COMP] completades</span>
-  </div><hr>
+  <!--projectes pausats-->
+  <details>
+    <summary>On hold projects</summary>
+    <p>Projects not actively maintained with possible future development reopening</p>
+    <ul>
+      <li>
+        ecam (IWA, GIZ)
+      </li>
+      <li>
+        ecoadvisor (ACA, Global Omnium)
+      </li>
+      <li>
+        innowatt (ICRA)
+      </li>
+    </ul>
+  </details><hr>
 </div>
 
 <!--llista tasques-->
-<ul id=tasques>
-  <!--comp: tasques completades-->
-    <li comp>[2023-12-14] <b>sbusquets, lcorominas</b>: Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
-    <li comp>[2024-01-03] <b>isanchez</b>:              Modificació web consum-electric.icradev.cat</li>
-    <li comp>[2024-01-12] <b>lcorominas</b>:            Article PCA</li>
-    <li comp>[2024-01-14] <b>jcuenca (SIE)</b>:         Cluster: arreglar node compute-12</li>
-    <li comp>[2024-01-17] <b>osacristan</b>:            R Venn diagrams ajuda amb el codi plot abundància relativa</li>
-    <li comp>[2024-01-29] <b>lguerrero</b>:             Release dades públiques (github i zenodo) xarxa vigilància SARSAIGUA (<a href="//github.com/icra/sars-aigues">github.com/icra/sars-aigues</a>)</li>
-    <li comp>[2024-01-10] <b>ollorente</b>:             Dubtes web colab icra + basquet-girona</li>
-    <li comp>[2024-02-01] <b>jlbalcazar</b>:            Suport usuari cluster pcolman</li>
-    <li comp>[2024-02-20] <b>aaranda</b>:               Instal·lar al cluster:
-      <ul>
-        <li comp>SRA Toolkit (NCBI)
-        <li comp>BWA-MEM
-        <li comp>STAR
-        <li comp>SAMTools
-        <li comp>HTSeq
-        <li comp>DeSeq
-        <li comp>FastQC i MultiQC
-      </ul>
-    </li>
-    <li comp>[2024-01-23] <b>lcorominas</b>: Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
-    <li comp>[2024-02-14] <b>jluque</b>:     Eina web per ajuntar 2 excels amb columna en comú</li>
-    <li comp>[2023-12-12] <b>etornés</b>:    Reconcilació base de dades omnidia (deadline: abril24)</li>
-    <li comp>[2024-03-01] <b>rdiaz</b>:      Ajuda muntatge node nou cluster</li>
-    <li comp>[2024-03-01] <b>rdiaz</b>:      Allotjar web antiga icra al cluster</li>
-    <li comp>[2024-03-07] <b>ssabater, etornés</b>: Compta les hores que has dedicat a fer això de les diatomees, per fer la factura, quan puguis, no hi ha pressa, encara no he acabat la meva part</li>
-    <li comp>[2024-03-08] <b>pgimenez, xgarcia</b>: Afegir contingut TV hall icra</li>
-    <li comp>[2024-03-14] <b>jlbalcazar</b>: Instalar R-bioconductor al cluster</li>
-    <li comp>[2024-03-13] <b>vrocasalva</b>: <a href="//riskassessment.icradev.cat">riskassessment.icradev.cat</a> error al codi BUGFIX</li>
-    <li comp>[2024-03-26] <b>mrescan</b>: crear container amb els programes fastqc i trimmomatic (java tots dos)</li>
-    <li comp>[2024-01-17] <b>apico</b>: Cluster: instalar megan6 [ok]. Mirar error "dconf"</li>
-    <li comp>[2024-03-13] <b>nklamerth</b>: Usuari + programes cluster ("sirius" + "ms-novelist")</li>
-    <li comp>[2024-04-16] <b>jortiz</b>: ajuda amb comandes cluster (qiime i biom)</li>
-    <li comp>[2024-04-16] <b>clemente abm</b>: carregar 3 nous fitxers 3d a la web (deflector, wetland, tanc etiquetes)</li>
-    <li comp>[2023-04-25] <b>rdiaz</b> update doc cluster sharepoint (https://ficra.sharepoint.com/sites/ICRA-IT2/SitePages/ICRA-HPC.aspx)</li>
-    <li comp>[2024-02-13] <b>asanchis</b>: Ajuda programació scripts shell (bash) cluster (blast, mummer, etc)</li>
-  <!--/comp-->
+<details open>
+  <summary>Tasks</summary>
 
-  <!--tasques pendents-->
-    <li prio>[2023-12-11] <b>pgimenez, vacuña</b>: mesocosmos
-      <a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>
-      <ul>
-        <li wipr>Base de dades FTP (ok, falta comprovar automatització)</li>
-        <li wipr>Interfície web nova (funciona engegar i parar aparells, falta dissenyar sistema de receptes automàtiques)</li>
-        <li>comentar amb afreixa reunió 30ABR</li>
-      </ul>
-    </li>
-    <li wipr>[2023-12-13] <b>mfarré, mcelic, fzafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)
-      <ul>
-        <li>[2024-01-10] <b>nros</b>:      Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom.</li>
-        <li>[2024-02-19] <b>apedregal</b>: Ajuda análisis estadístic (data.csv i pdf explicació mail)</li>
-        <li>[2024-03-07] <b>lbosch</b>:    Plataforma dedicada per anàlisi
-          automàtic de dades amb estructura "n+m" columnes on "n factors", "m
-          response variables" (<a href="//anova.icradev.cat">anova.icradev.cat</a>)
-        </li>
-        <li>comentar plataforma anova amb vicenç per fer difusió/seminari a icra</li>
-      </ul>
-    </li>
-    <li prio>[2024-04-05] <b>lcorominas</b>: comentaris revisors article pca
-      <b deadline>deadline: 2024-05-03</b>
-      <ul>
-        <li comp>Canviar part interpolació
-        <li comp>Calcular llindras a 5% i 1% per tenir tres franjes (verd, groc, vermell)
-        <li comp>Fer diccionari de scores per data on cada data és una pca diferent
-        <li wait>[2024-04-29] josep graficarà amb R segons JSON enviat
-      </ul>
-    </li>
-    <li>[2023-12-15] <b>lcorominas</b>: Ecovat crear prototip aparell innowatt</li>
-    <li>[2023-12-20] <b>lcorominas</b>: Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
-    <li wait>[2024-01-11] <b>ogutierrez</b>:
-      <ul>
-        <li comp>Recollir ordinador Fontajau</li>
-        <li wipr>Tractament de dades 2023 any sencer (optimizació potències)</li>
-        <li wait>rebre documents pdf xavier agustí (ajuntament girona)</li>
-      </ul>
-    </li>
-    <li wait>[2024-01-23] <b>gbuttiglieri, mriva</b>:
-      Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)
-      <ul>
-        <li comp>sim changed</li>
-        <li comp>internet working in router</li>
-        <li>static ip sim card
+  <div style="padding-left:20px">
+    <!--indexhtmlfilemtime-->
+    <div style="font-size:smaller;margin-top:1em">
+      <code>Updated: <code id=indexhtmlfilemtime>...</code></code>
+    </div><hr>
+
+    <!--llegenda filtre-->
+    <div id=llegenda style="font-size:smaller">
+      <code>Status filter</code>:
+      <span onclick="filtre_tasques('totes')" style="background:white">     totes</span>
+      <span onclick="filtre_tasques('todo')"  style="background:white">     [TODO] pendents (no començades)</span>
+      <span onclick="filtre_tasques('prio')"  style="background:lightgreen">[PRIO] prioritàries</span>
+      <span onclick="filtre_tasques('wipr')"  style="background:orange">    [WIPR] en procés</span>
+      <span onclick="filtre_tasques('wait')"  style="background:pink">      [WAIT] esperant feina d'algú altre</span>
+      <span onclick="filtre_tasques('comp')"  style="background:#ddd">      [COMP] completades</span>
+    </div><hr>
+
+    <ul id=tasques>
+      <!--comp: tasques completades-->
+        <li comp>[2023-12-14] <b>sbusquets, lcorominas</b>: Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
+        <li comp>[2024-01-03] <b>isanchez</b>:              Modificació web consum-electric.icradev.cat</li>
+        <li comp>[2024-01-12] <b>lcorominas</b>:            Article PCA</li>
+        <li comp>[2024-01-14] <b>jcuenca (SIE)</b>:         Cluster: arreglar node compute-12</li>
+        <li comp>[2024-01-17] <b>osacristan</b>:            R Venn diagrams ajuda amb el codi plot abundància relativa</li>
+        <li comp>[2024-01-29] <b>lguerrero</b>:             Release dades públiques (github i zenodo) xarxa vigilància SARSAIGUA (<a href="//github.com/icra/sars-aigues">github.com/icra/sars-aigues</a>)</li>
+        <li comp>[2024-01-10] <b>ollorente</b>:             Dubtes web colab icra + basquet-girona</li>
+        <li comp>[2024-02-01] <b>jlbalcazar</b>:            Suport usuari cluster pcolman</li>
+        <li comp>[2024-02-20] <b>aaranda</b>:               Instal·lar al cluster:
           <ul>
-            <li comp>dynamic dns configuration</li>
-            <li>get public ip through NAT</li>
-            <li wait>contractar ip fixa (mriva contacta amb agència catalana habitatge, esperant resposta)
+            <li comp>SRA Toolkit (NCBI)
+            <li comp>BWA-MEM
+            <li comp>STAR
+            <li comp>SAMTools
+            <li comp>HTSeq
+            <li comp>DeSeq
+            <li comp>FastQC i MultiQC
           </ul>
         </li>
-      </ul>
-    </li>
-    <li wipr>[2024-01-24] <b>jlbalcazar</b>: Cluster instalar (/home/pipelines/ubuntu_*):
-      <ul>
-        <li comp>cutadapt
-        <li comp>spades
-        <li comp>skesa
-        <li wipr>pgap
+        <li comp>[2024-01-23] <b>lcorominas</b>: Fitxers 3d ABM (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
+        <li comp>[2024-02-14] <b>jluque</b>:     Eina web per ajuntar 2 excels amb columna en comú</li>
+        <li comp>[2023-12-12] <b>etornés</b>:    Reconcilació base de dades omnidia (deadline: abril24)</li>
+        <li comp>[2024-03-01] <b>rdiaz</b>:      Ajuda muntatge node nou cluster</li>
+        <li comp>[2024-03-01] <b>rdiaz</b>:      Allotjar web antiga icra al cluster</li>
+        <li comp>[2024-03-07] <b>ssabater, etornés</b>: Compta les hores que has dedicat a fer això de les diatomees, per fer la factura, quan puguis, no hi ha pressa, encara no he acabat la meva part</li>
+        <li comp>[2024-03-08] <b>pgimenez, xgarcia</b>: Afegir contingut TV hall icra</li>
+        <li comp>[2024-03-14] <b>jlbalcazar</b>: Instalar R-bioconductor al cluster</li>
+        <li comp>[2024-03-13] <b>vrocasalva</b>: <a href="//riskassessment.icradev.cat">riskassessment.icradev.cat</a> error al codi BUGFIX</li>
+        <li comp>[2024-03-26] <b>mrescan</b>: crear container amb els programes fastqc i trimmomatic (java tots dos)</li>
+        <li comp>[2024-01-17] <b>apico</b>: Cluster: instalar megan6 [ok]. Mirar error "dconf"</li>
+        <li comp>[2024-03-13] <b>nklamerth</b>: Usuari + programes cluster ("sirius" + "ms-novelist")</li>
+        <li comp>[2024-04-16] <b>jortiz</b>: ajuda amb comandes cluster (qiime i biom)</li>
+        <li comp>[2024-04-16] <b>clemente abm</b>: carregar 3 nous fitxers 3d a la web (deflector, wetland, tanc etiquetes)</li>
+        <li comp>[2023-04-25] <b>rdiaz</b> update doc cluster sharepoint (https://ficra.sharepoint.com/sites/ICRA-IT2/SitePages/ICRA-HPC.aspx)</li>
+        <li comp>[2024-02-13] <b>asanchis</b>: Ajuda programació scripts shell (bash) cluster (blast, mummer, etc)</li>
+      <!--/comp-->
+
+      <!--tasques pendents-->
+        <li prio>[2023-12-11] <b>pgimenez, afreixa</b>: mesocosmos
+          <a href="//mesocosmos.icradev.cat">mesocosmos.icradev.cat</a>
           <ul>
-            <li>comprovar container (docker://ncbi/pgap_2023-10-03.build7061)
+            <li> sistema FTP
+              <ul>
+                <li comp>comentar amb afreixa reunió 30ABR
+                <li prio>fer funcionar correctament
+              </ul>
+            </li>
+            <li> mesocosmos live
+              <ul>
+                <li comp>comentar amb afreixa reunió 30ABR
+                <li prio>receptes automàtiques (lògica)
+                <li>(futur) disseny interfície
+              </ul>
+            </li>
           </ul>
         </li>
-        <li comp>quast
-      </ul>
-    </li>
-    <li wait>
-      [2024-01-24] <b>sbusquets, ljaurrieta</b>: Suport modificació web 4sm (<a href="//4sm.icradev.cat">4sm.icradev.cat</a>)
-      <ul>
-        <li wait>esperar sbusquets demani ajuda
-      </ul>
-    </li>
-
-    <li>[2024-01-29] <b>ogutierrez, lcorominas</b>: Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
-    <li>[2024-01-29] <b>lcorominas</b>: Traduir paquet innowatt (protocol lectura comptadors) de py2 a py3</li>
-
-    <li wait>[2024-02-05] <b>xgarcia</b>: Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.
-      <ul>
-        <li wait>esperar xavi demani ajuda i/o preguntar status
-      </ul>
-    </li>
-    <li wait>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
-      <ul>
-        <li>Reunió amb DSET + Eduard (parc manteniment)
-        <li>Carpeta "htdocs/segmentacio-kwh". Provar llibreria knx (npm install knx) (<a href="//npmjs.com/package/knx">npmjs.com/package/knx</a>)
-        <li comp>reunió dia 3 Abr
-        <li comp>reunió 10ABR isanchez+eduard
-        <li wait>esperar dvila(DSET) i eduard(PARC) executin segons el parlat a la reunió
-      </ul>
-    </li>
-    <li wipr>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
-      <ul>
-        <li wipr>falta pensar com fer tema DNS per login investigadors ICRA
+        <li wipr>[2023-12-13] <b>mfarré, mcelic, fzafra</b>: Plataforma waterdom statistics: OPLS-DA + ANOVA + posthoc tests (<a href="//waterdom.icradev.cat">waterdom.icradev.cat</a>)
           <ul>
-            <li>provar ssh tunel (-L)
+            <li>[2024-01-10] <b>nros</b>:      Tractament estadístic dades multivariants (PCA + ANOVA). Aprofitar plataforma waterdom.</li>
+            <li>[2024-02-19] <b>apedregal</b>: Ajuda análisis estadístic (data.csv i pdf explicació mail)</li>
+            <li>[2024-03-07] <b>lbosch</b>:    Plataforma dedicada per anàlisi
+              automàtic de dades amb estructura "n+m" columnes on "n factors", "m
+              response variables" (<a href="//anova.icradev.cat">anova.icradev.cat</a>)
+            </li>
+            <li>comentar plataforma anova amb vicenç per fer difusió/seminari a icra</li>
           </ul>
         </li>
-      </ul>
-    </li>
-    <li wipr>[2024-03-13] <b>asegues, mpijuan</b>:       Programació electrovalvula + bomba (arduinos)
-      <ul>
-        <li comp>comprar Relé de 220V-AC, 30V-DC, activable amb senyal de 5V
-        <li comp>o bé comprar transistor MOSFET de 24V, activable amb senyal de 5V
-        <li comp>trobada botiga a girona (BTS electrònica, Carrer de Valladolid, 7, 17005 Girona)
-        <li comp>status: asegues diu comprarà peces (2024-04-02)
-        <li wait>quedar per mirar peces 6MAI
-      </ul>
-    </li>
-    <li>[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
-      <ul>
-        <li comp>Comentar amb rdiaz</li>
-        <li>Comentar amb vacuña</li>
-      </ul>
-    </li>
-    <li>
-      [2024-04-03] <b>lcorominas</b>: projecte wotter, compilar model janick i
-      visualitzador jsalo en una web.
-    </li>
-    <li wait>[2024-04-16] <b>apedregal, dmercado</b>: compilar fitxers CS en container al cluster + instalar R, python i jupyter
-      <ul>
-        <li comp>apedregal contacta autors per compilar només app de terminal</li>
-        <li comp>els autors responen que no enviaran el codi
-        <li comp>[2024-04-19] singularity pull docker://mtapiio/wine8 funciona
-        <li comp>[2024-04-19] instalar dins del cluster
-        <li wait>[2024-04-25] apedregal i dmercado fan proves i em diuen algo
-      </ul>
-    </li>
-    <li wait>
-      [2024-04-19] <b>jcomas, emendoza, gbuttiglieri</b> paret verda icra
-      <ul>
-        <li comp>Reunió 26ABR 9h (jcomas, isegirona, lbosch) a icra
-        <li wait>reagendar reunió esperar ise girona
-      </ul>
-    </li>
-    <li wipr>[2024-04-24] <b>cgutierrez</b> pts.icradev.cat
-      <ul>
-        <li wait>reunió 6MAI amb pts per dissenyar web
-      </ul>
-    </li>
-    <li wait>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS (14 noves)
-      <ul>
+        <li prio>[2024-04-05] <b>lcorominas</b>: comentaris revisors article pca
+          <b deadline>deadline: 2024-05-03</b>
+          <ul>
+            <li comp>Canviar part interpolació
+            <li comp>Calcular llindras a 5% i 1% per tenir tres franjes (verd, groc, vermell)
+            <li comp>Fer diccionari de scores per data on cada data és una pca diferent
+            <li wait>[2024-04-29] josep graficarà amb R segons JSON enviat
+          </ul>
+        </li>
+        <li>[2023-12-15] <b>lcorominas</b>: Ecovat crear prototip aparell innowatt</li>
+        <li>[2023-12-20] <b>lcorominas</b>: Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
+        <li wait>[2024-01-11] <b>ogutierrez</b>:
+          <ul>
+            <li comp>Recollir ordinador Fontajau</li>
+            <li wipr>Tractament de dades 2023 any sencer (optimizació potències)</li>
+            <li wait>rebre documents pdf xavier agustí (ajuntament girona)</li>
+          </ul>
+        </li>
+        <li wait>[2024-01-23] <b>gbuttiglieri, mriva</b>:
+          Programació PLC projecte MULTISOURCE (SIM card replacement on the GRETA system - Sant Quirze)
+          <ul>
+            <li comp>sim changed</li>
+            <li comp>internet working in router</li>
+            <li>static ip sim card
+              <ul>
+                <li comp>dynamic dns configuration</li>
+                <li>get public ip through NAT</li>
+                <li wait>contractar ip fixa (mriva contacta amb agència catalana habitatge, esperant resposta)
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li wipr>[2024-01-24] <b>jlbalcazar</b>: Cluster instalar (/home/pipelines/ubuntu_*):
+          <ul>
+            <li comp>cutadapt
+            <li comp>spades
+            <li comp>skesa
+            <li wipr>pgap
+              <ul>
+                <li>comprovar container (docker://ncbi/pgap_2023-10-03.build7061)
+              </ul>
+            </li>
+            <li comp>quast
+          </ul>
+        </li>
         <li wait>
-          (lide mirarà)
-          falta confirmar el "Naphrax" (https://riskassessment.icradev.cat/fitxes/documents/renamed/FDS-706.pdf)
+          [2024-01-24] <b>sbusquets, ljaurrieta</b>: Suport modificació web 4sm (<a href="//4sm.icradev.cat">4sm.icradev.cat</a>)
+          <ul>
+            <li wait>esperar sbusquets demani ajuda
+          </ul>
         </li>
-      </ul>
-    </li>
-    <li>
-      [2024-04-26] <b>rdiaz</b> parar nodes antics cluster (compute-{00..11})
-    </li>
-  <!--/todo-->
-</ul>
+
+        <li>[2024-01-29] <b>ogutierrez, lcorominas</b>: Comprar cable òptic i modem USB per fer lectures remotes innowatt</li>
+        <li>[2024-01-29] <b>lcorominas</b>: Traduir paquet innowatt (protocol lectura comptadors) de py2 a py3</li>
+
+        <li wait>[2024-02-05] <b>xgarcia</b>: Web estudiant (mapa d'accions de recerca al mapa de Catalunya). A la reunió s'ha acordat fer servir "my maps" de google + codi embed.
+          <ul>
+            <li wait>esperar xavi demani ajuda i/o preguntar status
+          </ul>
+        </li>
+        <li wait>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
+          <ul>
+            <li>Reunió amb DSET + Eduard (parc manteniment)
+            <li>Carpeta "htdocs/segmentacio-kwh". Provar llibreria knx (npm install knx) (<a href="//npmjs.com/package/knx">npmjs.com/package/knx</a>)
+            <li comp>reunió dia 3 Abr
+            <li comp>reunió 10ABR isanchez+eduard
+            <li wait>esperar dvila(DSET) i eduard(PARC) executin segons el parlat a la reunió
+          </ul>
+        </li>
+        <li wipr>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
+          <ul>
+            <li wipr>falta pensar com fer tema DNS per login investigadors ICRA
+              <ul>
+                <li>provar ssh tunel (-L)
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li wipr>[2024-03-13] <b>asegues, mpijuan</b>:       Programació electrovalvula + bomba (arduinos)
+          <ul>
+            <li comp>comprar Relé de 220V-AC, 30V-DC, activable amb senyal de 5V
+            <li comp>o bé comprar transistor MOSFET de 24V, activable amb senyal de 5V
+            <li comp>trobada botiga a girona (BTS electrònica, Carrer de Valladolid, 7, 17005 Girona)
+            <li comp>status: asegues diu comprarà peces (2024-04-02)
+            <li wait>quedar per mirar peces 6MAI
+          </ul>
+        </li>
+        <li>[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
+          <ul>
+            <li comp>Comentar amb rdiaz</li>
+            <li>Comentar amb vacuña</li>
+          </ul>
+        </li>
+        <li>[2024-04-03] <b>lcorominas</b>: projecte wotter, compilar model janick i
+          visualitzador jsalo en una web.
+        </li>
+        <li wait>[2024-04-16] <b>apedregal, dmercado</b>: compilar fitxers CS en container al cluster + instalar R, python i jupyter
+          <ul>
+            <li comp>apedregal contacta autors per compilar només app de terminal</li>
+            <li comp>els autors responen que no enviaran el codi
+            <li comp>[2024-04-19] singularity pull docker://mtapiio/wine8 funciona
+            <li comp>[2024-04-19] instalar dins del cluster
+            <li wait>[2024-04-25] apedregal i dmercado fan proves i em diuen algo
+          </ul>
+        </li>
+        <li wait>[2024-04-19] <b>jcomas, emendoza, gbuttiglieri</b> paret verda icra
+          <ul>
+            <li comp>Reunió 26ABR 9h (jcomas, isegirona, lbosch) a icra
+            <li wait>reagendar reunió esperar ise girona
+          </ul>
+        </li>
+        <li wipr>[2024-04-24] <b>cgutierrez</b> pts.icradev.cat
+          <ul>
+            <li wait>reunió 6MAI amb pts per dissenyar web
+          </ul>
+        </li>
+        <li wait>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS (14 noves)
+          <ul>
+            <li wait>
+              (lide mirarà)
+              falta confirmar el "Naphrax" (https://riskassessment.icradev.cat/fitxes/documents/renamed/FDS-706.pdf)
+            </li>
+          </ul>
+        </li>
+        <li>[2024-04-26] <b>rdiaz</b> parar nodes antics cluster (compute-{00..11})
+        </li>
+      <!--/todo-->
+    </ul>
+  </div>
+</details><hr>
