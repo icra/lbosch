@@ -1,4 +1,6 @@
 <?php
+  //funció per calcular temps passat des d'una data
+  //format: "yyyy-mm-dd hh:MM:ss"
   function time_ago($time) {
     $time_ago = strtotime($time);
     $cur_time = time();
