@@ -2,8 +2,7 @@ https://lbosch.icradev.cat
 
 Lluís Bosch, ICRA Research Support Computer Scientist
 
-List of tasks / requests
-
+Services that that ICRA employees can request:
 <ul>
   <li>Assistance in programming.
   <li>Automation of tasks.
