@@ -48,18 +48,23 @@
     }
 
     /*específic*/
-    ul#tasques {
-      padding-left:0;
+    ul#tasques[cards] {
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(min(400px,100%),1fr));
       grid-gap:2px 3px;
+    }
+    ul#tasques {
+      padding-left:0;
       margin-top:6px;
+      transition:all 1s;
     }
     ul#tasques > li{
+      padding:5px;
       border:1px solid #ccc;
       list-style:none;
       background:white;
       word-break:break-word;
+      margin-bottom:1px;
     }
     ul#tasques li:before{
       content:'[TODO]';
@@ -90,7 +95,7 @@
     }
     #llegenda {
       display:flex;
-
+      align-items:center;
     }
     #llegenda span{
       cursor:pointer;
@@ -197,11 +202,32 @@
       });
 
       //mostra
-      document.querySelectorAll(`ul#tasques > li:not([comp])`).forEach(li=>{
+      document.querySelectorAll(`ul#tasques > li`).forEach(li=>{
         if(li.innerHTML.includes(persona)){
           li.style.display="list-item";
         }
       });
+    }
+  </script>
+
+  <script>
+    //padding tasques
+    let pt_px = 5;
+    function set_padding_tasques(n_px){
+      let style = document.createElement("style");
+      style.innerText=`
+        ul#tasques > li{
+          padding:${n_px}px;
+        }
+      `;
+      document.body.appendChild(style);
+    }
+    function augmenta_padding_tasques(){
+      set_padding_tasques(++pt_px);
+    }
+    function disminueix_padding_tasques(){
+      set_padding_tasques(--pt_px);
+      if(pt_px<0)pt_px=0;
     }
   </script>
 
@@ -286,16 +312,29 @@
       <span onclick="filtre_tasques('comp')"  style="background:#ddd">      [COMP] completades</span>
     </div>
 
-    <div
-      id=filtre_researchers
+    <!--filtre noms investigadors-->
+    <div id=filtre_researchers
       style="
         display:flex;
         flex-wrap:wrap;
       "
+    ></div>
+
+    <!--mode vista tasques pendents: horitzontal o quadrícula-->
+    <div
+      style="
+        display:flex;
+      "
     >
+      <button onclick="document.querySelector('ul#tasques').removeAttribute('cards')">&#9636;</button><!--
+      --><button onclick="document.querySelector('ul#tasques').setAttribute('cards',1)">&#9638;</button>
+
+      <button onclick="disminueix_padding_tasques()">&#128917;</button><!--
+      --><button onclick="augmenta_padding_tasques()"  >&#128916;</button>
     </div>
 
-    <ul id=tasques>
+
+    <ul id=tasques cards>
       <!--comp: tasques completades-->
         <li comp>[2023-12-14] <b>sbusquets, lcorominas</b>: Millorar web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)</li>
         <li comp>[2024-01-03] <b>isanchez</b>:              Modificació web consum-electric.icradev.cat</li>
@@ -400,17 +439,17 @@
             </li>
           </ul>
         </li>
-        <li wipr>[2024-01-24] <b>jlbalcazar</b>: Cluster instalar (/home/pipelines/ubuntu_*):
+        <li wait>[2024-01-24] <b>jlbalcazar</b>: Cluster instalar (/home/pipelines/ubuntu_*):
           <ul>
             <li comp>cutadapt
             <li comp>spades
             <li comp>skesa
+            <li comp>quast
             <li wipr>pgap
               <ul>
-                <li>comprovar container (docker://ncbi/pgap_2023-10-03.build7061)
+                <li wait>comprovar container (docker://ncbi/pgap_2023-10-03.build7061)
               </ul>
             </li>
-            <li comp>quast
           </ul>
         </li>
         <li wait>
@@ -468,10 +507,10 @@
             </li>
           </ul>
         </li>
-        <li>[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
+        <li >[2024-03-22] <b>lbosch</b>: inventari peces (<a href="//inventari-electronica.icradev.cat">inventari-electronica.icradev.cat</a>).
           <ul>
-            <li comp>Comentar amb rdiaz</li>
-            <li>Comentar amb vacuña</li>
+            <li comp>Comentar amb rdiaz </li>
+            <li comp>Comentar amb vacuña (li sembla bé) </li>
           </ul>
         </li>
         <li>[2024-04-03] <b>lcorominas</b>: projecte wotter, compilar model janick i
@@ -631,8 +670,26 @@
             </li>
           </ul>
         </li>
+        <li wait>
+          [2024-06-12]
+          <b>pcolman</b>
+          anvio setup preguntar
+        </li>
+        <li wait>
+          [2024-06-18]
+          <b>osacristan</b>
+          spades problema memoria
+          <br>
+          hem ampliat la memoria per procés així:<br>
+          <p><code>
+            [root][~]# cat /proc/sys/vm/max_map_count<br>
+            65530<br>
+            [root][~]# sysctl vm.max_map_count=262144<br>
+            [root][~]# cat /proc/sys/vm/max_map_count<br>
+            262144<br>
+          </code></p>
+        </li>
       <!--/todo next task-->
     </ul>
   </div>
 </details>
-
