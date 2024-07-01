@@ -172,7 +172,7 @@
 
     function get_all_icra_researchers(){
       let persones=[];
-      document.querySelectorAll("#tasques li:not([comp]) b").forEach(b=>{
+      document.querySelectorAll("#tasques li b").forEach(b=>{
         b.innerText.split(", ").forEach(token=>{
           persones.push(token);
         });
@@ -373,6 +373,16 @@
         <li comp>[2024-02-13] <b>asanchis</b>: Ajuda programació scripts shell (bash) cluster (blast, mummer, etc)</li>
         <li comp>[2024-05-27] <b>asanchis</b>: instalar A5 pipeline cluster</li>
         <li comp>[2024-05-27] <b>dhenry</b>: cluster: container ubuntu amb python3 i python3-osgeo (gdal)</li>
+        <li comp>[2024-06-06] <b>mrescan, mdachs</b>: container amb els programes hisat2, fadu</li>
+        <li comp>[2024-06-28] <b>asanchis</b>: ajuda amb fitxers FASTA</li>
+        <li comp>
+          <b>ssabater, etornes</b>
+          <a href="https://deteccio-especies.icradev.cat/">https://deteccio-especies.icradev.cat/</a>
+        </li>
+        <li comp>
+          <b>ssabater</b>
+          <a href="https://tragsatec.icradev.cat/">https://tragsatec.icradev.cat/</a>
+        </li>
       <!--/comp-->
 
       <!--tasques pendents-->
@@ -477,7 +487,7 @@
             <li wait>sigfox HTTP REST API (<a href="https://support.sigfox.com/apidocs">https://support.sigfox.com/apidocs</a>)
           </ul>
         </li>
-        <li wait>[2024-03-13] <b>vrocasalva, cgutierrez</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
+        <li wait>[2024-03-13] <b>vrocasalva, cgutierrez, mpijuan, wgernjak</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
           <ul>
             <li comp>login investigadors ICRA
               <ul>
@@ -680,6 +690,7 @@
           <ul>
             <li comp>kaiju (https://github.com/bioinformatics-centre/kaiju)
             <li comp>centrifuge (https://github.com/DaehwanKimLab/centrifuge/releases)
+            <li comp>instalar firefox i chrome al cluster
             <li wait>pcolman fa prova i em diu si tot ok
           </ul>
         </li>
