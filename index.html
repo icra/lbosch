@@ -313,7 +313,8 @@
     </div>
 
     <!--filtre noms investigadors-->
-    <div id=filtre_researchers
+    <div
+      id=filtre_researchers
       style="
         display:flex;
         flex-wrap:wrap;
@@ -321,11 +322,7 @@
     ></div>
 
     <!--mode vista tasques pendents: horitzontal o quadrícula-->
-    <div
-      style="
-        display:flex;
-      "
-    >
+    <div style="display:flex;">
       <button onclick="document.querySelector('ul#tasques').removeAttribute('cards')">&#9636;</button><!--
       --><button onclick="document.querySelector('ul#tasques').setAttribute('cards',1)">&#9638;</button>
 
@@ -712,6 +709,12 @@
           [2024-06-25]
           <b>lcorominas</b>
           descripcio components sarsaigua
+        </li>
+        <li comp>
+          [2024-07-10]
+          <b>jpueyo</b>
+          ajuda amb deployment de web al loading (ssh-keygen, ssh-copy-id,
+          instalar WSL i ubuntu per fer rsync)
         </li>
       <!--/todo next task-->
     </ul>
