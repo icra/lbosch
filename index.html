@@ -271,23 +271,6 @@
       </div>
     </details>
   </div><hr>
-
-  <!--projectes pausats-->
-  <details>
-    <summary>On hold projects</summary>
-    <p>Projects not actively maintained BUT with possible future development reopening</p>
-    <ul>
-      <li>
-        ecam (IWA, GIZ)
-      </li>
-      <li>
-        ecoadvisor (ACA, Global Omnium)
-      </li>
-      <li>
-        innowatt (ICRA)
-      </li>
-    </ul>
-  </details><hr>
 </div>
 
 <!--llista tasques-->
@@ -308,25 +291,29 @@
   <div style="padding-left:10px">
     <!--llegenda filtre-->
     <div id=llegenda style="font-size:smaller;margin-top:1em">
-      <span onclick="filtre_tasques('totes')" style="background:white">     totes</span>
-      <span onclick="filtre_tasques('todo')"  style="background:white">     [TODO] pendents (no començades)</span>
-      <span onclick="filtre_tasques('prio')"  style="background:lightgreen">[PRIO] prioritàries</span>
-      <span onclick="filtre_tasques('wipr')"  style="background:orange">    [WIPR] en procés</span>
-      <span onclick="filtre_tasques('wait')"  style="background:pink">      [WAIT] esperant feina d'algú altre</span>
-      <span onclick="filtre_tasques('comp')"  style="background:#ddd">      [COMP] completades</span>
+      <span onclick="filtre_tasques('totes')" style="background:white">     all</span>
+      <span onclick="filtre_tasques('todo')"  style="background:white">     [TODO] pending (not started)</span>
+      <span onclick="filtre_tasques('prio')"  style="background:lightgreen">[PRIO] prioritary</span>
+      <span onclick="filtre_tasques('wipr')"  style="background:orange">    [WIPR] work in progress</span>
+      <span onclick="filtre_tasques('wait')"  style="background:pink">      [WAIT] waiting for someone else</span>
+      <span onclick="filtre_tasques('comp')"  style="background:#ddd">      [COMP] complete</span>
     </div>
 
     <!--filtre noms investigadors-->
-    <div
-      id=filtre_researchers
-      style="
-        display:flex;
-        flex-wrap:wrap;
-      "
-    ></div>
+    <div>
+      ICRA people:
+      <div
+        id=filtre_researchers
+        style="
+          display:flex;
+          flex-wrap:wrap;
+        "
+      ></div>
+    </div>
 
     <!--mode vista tasques pendents: horitzontal o quadrícula-->
-    <div style="display:flex;">
+    <div style="display:flex;align-items:center">
+      <div>Visualization options:</div>
       <button onclick="document.querySelector('ul#tasques').removeAttribute('cards')">&#9636;</button><!--
       --><button onclick="document.querySelector('ul#tasques').setAttribute('cards',1)">&#9638;</button>
 
@@ -385,6 +372,27 @@
           <a href="https://tragsatec.icradev.cat/">https://tragsatec.icradev.cat/</a>
         </li>
       <!--/comp-->
+
+      <!--projectes on hold-->
+      <li wait>
+        On hold projects:
+        <p>not actively maintained BUT with possible future development
+        reopening:</p>
+        <ul>
+          <li>
+            <b>lcorominas</b>
+            ecam (IWA, GIZ)
+          </li>
+          <li>
+            <b>lcorominas, vacuña, jcomas</b>
+            ecoadvisor (ACA, Global Omnium)
+          </li>
+          <li>
+            <b>lcorominas, ogutierrez</b>
+            innowatt (ICRA)
+          </li>
+        </ul>
+      </li>
 
       <!--tasques pendents-->
         <li prio>[2023-12-11] <b>pgimenez, afreixa</b>: mesocosmos
