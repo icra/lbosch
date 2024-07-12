@@ -297,6 +297,15 @@
       <span onclick="filtre_tasques('wipr')"  style="background:orange">    [WIPR] work in progress</span>
       <span onclick="filtre_tasques('wait')"  style="background:pink">      [WAIT] waiting for someone else</span>
       <span onclick="filtre_tasques('comp')"  style="background:#ddd">      [COMP] complete</span>
+      <!--mode vista tasques pendents: horitzontal o quadrícula-->
+      <div style="display:flex;align-items:center">
+        <div>Visualization options:</div>
+        <button onclick="document.querySelector('ul#tasques').removeAttribute('cards')">&#9636;</button><!--
+        --><button onclick="document.querySelector('ul#tasques').setAttribute('cards',1)">&#9638;</button>
+
+        <button onclick="disminueix_padding_tasques()">&#128917;</button><!--
+        --><button onclick="augmenta_padding_tasques()"  >&#128916;</button>
+      </div>
     </div>
 
     <!--filtre noms investigadors-->
@@ -310,17 +319,6 @@
         "
       ></div>
     </div>
-
-    <!--mode vista tasques pendents: horitzontal o quadrícula-->
-    <div style="display:flex;align-items:center">
-      <div>Visualization options:</div>
-      <button onclick="document.querySelector('ul#tasques').removeAttribute('cards')">&#9636;</button><!--
-      --><button onclick="document.querySelector('ul#tasques').setAttribute('cards',1)">&#9638;</button>
-
-      <button onclick="disminueix_padding_tasques()">&#128917;</button><!--
-      --><button onclick="augmenta_padding_tasques()"  >&#128916;</button>
-    </div>
-
 
     <ul id=tasques cards>
       <!--comp: tasques completades-->
