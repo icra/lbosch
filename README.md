@@ -2,6 +2,8 @@ https://lbosch.icradev.cat
 
 Lluís Bosch, ICRA Research Support Computer Scientist
 
+<a href="docs/2023-11-30-lluis-bosch-empowering-research-through-computing-support.pptx">See Presentation</a><br>
+
 Services that that ICRA employees can request:
 <ul>
   <li>Assistance in programming.
