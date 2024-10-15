@@ -59,7 +59,7 @@
       transition:all 1s;
     }
     ul#tasques > li{
-      padding:5px;
+      padding:0px;
       border:1px solid #ccc;
       list-style:none;
       background:white;
@@ -227,7 +227,7 @@
     }
     function disminueix_padding_tasques(){
       set_padding_tasques(--pt_px);
-      if(pt_px<0)pt_px=0;
+      if(pt_px<0) pt_px=0;
     }
   </script>
 
@@ -432,7 +432,7 @@
           </ul>
         </li>
         <li>[2023-12-15] <b>lcorominas</b>: Ecovat crear prototip aparell innowatt</li>
-        <li>[2023-12-20] <b>lcorominas</b>: Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
+        <li comp>[2023-12-20] <b>lcorominas</b>: Solucionar renovació automàtica domini loading icradev.cat pel 2025</li>
         <li wait>[2024-01-11] <b>ogutierrez</b>:
           <ul>
             <li comp>Recollir ordinador Fontajau</li>
@@ -483,7 +483,7 @@
             <li wait>esperar xavi demani ajuda i/o preguntar status
           </ul>
         </li>
-        <li prio>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
+        <li wait>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
           <ul>
             <li>Reunió amb DSET + Eduard (parc manteniment)
             <li>Carpeta "htdocs/segmentacio-kwh". Provar llibreria knx (npm install knx) (<a href="//npmjs.com/package/knx">npmjs.com/package/knx</a>)
@@ -542,7 +542,7 @@
             <li wait>[2024-04-25] apedregal i dmercado fan proves i em diuen algo
           </ul>
         </li>
-        <li prio>[2024-04-19] <b>jcomas, emendoza, gbuttiglieri</b> paret verda icra
+        <li wait>[2024-04-19] <b>jcomas, emendoza, gbuttiglieri</b> paret verda icra
           <ul>
             <li comp>Reunió 26ABR 9h (jcomas, isegirona, lbosch) a icra
             <li comp>reunió 16MAI (el PLC serà siemens o omron)
@@ -618,7 +618,7 @@
             <li wait>reunió per dissenyar web
           </ul>
         </li>
-        <li wait>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS
+        <li comp>[2023-04-25] <b>ljaurrieta</b> update fitxes SDS
           <ul>
             <li comp>noves (706 a 719)</li>
             <li comp>
@@ -645,7 +645,7 @@
           <b>lcorominas, jklink, jsalo</b>
           verificar que wotter funciona després dels canvis de jsalo
         </li>
-        <li wait>
+        <li comp>
           [2024-05-30]
           <b>osacristan</b>
           kraken2 instalar (/home/pipelines/alpine_kraken.sif)
@@ -655,17 +655,15 @@
           <b>mriva, eherran</b>
           manteniment <a href="//paretverda.icradev.cat">paretverda.icradev.cat</a>
           <ul>
-            <li >preguntar status
+            <li>preguntar status
             [2024-07-15]
-            <b>peticionari</b>
-            descripcio
           </ul>
 
         </li>
-        <li wait>
+        <li comp>
           [2024-06-12]
           <b>ollorente</b>
-          alpine R swat
+          configurar container alpine amb R i swat
         </li>
         <li wait>
           [2024-06-12]
@@ -696,7 +694,7 @@
             </li>
           </ul>
         </li>
-        <li wait>
+        <li comp>
           [2024-06-12]
           <b>pcolman</b>
           anvio setup
@@ -707,7 +705,7 @@
             <li wait>pcolman fa prova i em diu si tot ok
           </ul>
         </li>
-        <li wait>
+        <li comp>
           [2024-06-18]
           <b>osacristan</b>
           spades problema memoria
@@ -732,7 +730,7 @@
           ajuda amb deployment de web al loading (ssh-keygen, ssh-copy-id,
           instalar WSL i ubuntu per fer rsync)
         </li>
-        <li wait>
+        <li comp>
           [2024-07-10] <b>pcolman</b>
           instal·lar programes metagenòmica per treballar amb anvio:<ul>
             <li comp>spades
@@ -743,6 +741,34 @@
             <li wait>agnostos
             <li wait>pcolman fa prova i em diu si tot ok
           </ul>
+        </li>
+        <li comp>
+          [2024-07-22]
+          <b>sdrammeh, lcorominas, pcolman, apico</b>
+          web enquesta podcast
+        </li>
+
+        <li prio>
+          [2024-10-15]
+          <b>mcelic</b>
+          web <a href="https://orbitrap.icradev.cat">orbitrap.icradev.cat</a><br>
+          afegir taula summary
+        </li>
+        <li prio>
+          [2024-10-15]
+          <b>isanchez, rdiaz</b>
+          simulador escenaris (projectes, persones, despeses, indicadors)
+          <a href="https://simulador-icra.icradev.cat">simulador-icra.icradev.cat</a>
+        </li>
+        <li wait>
+          [2024-10-15]
+          <b>pcolman</b>
+          instalar nf-core (nextflow). pcolman prova i em diu si funciona tot ok
+        </li>
+        <li prio>
+          [2024-10-15]
+          <b>vrocasalva</b>
+          renovar loading+plesk+domini icradev
         </li>
       <!--/todo next task-->
     </ul>
