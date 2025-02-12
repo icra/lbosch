@@ -129,9 +129,7 @@
     ];
 
     function filtre_tasques(tipus){
-      if(classes_tasques.includes(tipus)==false){
-        return false;
-      }
+      if(!classes_tasques.includes(tipus)) return false;
 
       //oculta totes les tasques
       document.querySelectorAll(`ul#tasques > li`).forEach(li=>{
@@ -483,7 +481,7 @@
             <li wait>esperar xavi demani ajuda i/o preguntar status
           </ul>
         </li>
-        <li wait>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
+        <li prio>[2024-02-12] <b>isanchez</b>: Segmentació per aparell consum elèctric edifici H2O. Consulta feta a C2i. Manteniment i rdiaz també participen.
           <ul>
             <li>Reunió amb DSET + Eduard (parc manteniment)
             <li>Carpeta "htdocs/segmentacio-kwh". Provar llibreria knx (npm install knx) (<a href="//npmjs.com/package/knx">npmjs.com/package/knx</a>)
@@ -509,9 +507,13 @@
                 <li comp>treure àrees
                 <li comp>crear usuari "visitants" (login visitants)
                 <li comp>per poder firmar (posar nom del visitant)
-                <li>filtrar documents per perillositat
+                <li comp>filtrar documents per perillositat
                 <li comp>filtrar projectes per actiu/inactiu
-                <li>poder buscar categories sense projecte al buscador
+                <li>
+                  [2025-01-20]
+                  <b>ncaceres</b>:
+                  poder pujar pdfs FDS
+                </li>
               </ul>
             </li>
           </ul>
@@ -663,15 +665,15 @@
           <b>osacristan</b>
           kraken2 instalar (/home/pipelines/alpine_kraken.sif)
         </li>
-        <li wipr>
+        <li prio>
           [2024-06-07]
-          <b>mriva, eherran</b>
-          manteniment <a href="//paretverda.icradev.cat">paretverda.icradev.cat</a>
+          <b>mriva, eherran, emendoza, jcomas</b>
+          <p><a href="//paretverda.icradev.cat">paretverda.icradev.cat</a></p>
           <ul>
-            <li>preguntar status
-            [2024-07-15]
+            <li> afegir visualitzador PLC modbus dins d'aquest domini
+            <li> ips fixes: 192.168.103.75, 192.168.103.76
+            <li> preguntar estat PLC albert i implementar llibreria modbus
           </ul>
-
         </li>
         <li comp>
           [2024-06-12]
@@ -764,10 +766,10 @@
         <li prio>
           [2024-10-15]
           <b>mcelic</b>
-          web <a href="https://orbitrap.icradev.cat">orbitrap.icradev.cat</a><br>
+          <p><a href="https://orbitrap.icradev.cat">orbitrap.icradev.cat</a></p>
           afegir taula summary
         </li>
-        <li prio>
+        <li wait>
           [2024-10-15]
           <b>isanchez, rdiaz</b>
           simulador escenaris (projectes, persones, despeses, indicadors)
@@ -833,8 +835,41 @@
               <td>d<sub>n</sub></td>
             </tr>
           </table>
+
+          <ul>
+            <li>descarregar models (7TB) a disc dur icra wolf
+          </ul>
+
         </li>
+        <li prio>
+          [2025-01-20]
+          <b>mfillol, lcorominas</b>
+          <p><a href="//covidvigilancia.icra.cat">covidvigilancia.icra.cat</a></p>
+          <ul>
+            <li comp>canvi al formulari 2 (lab) per enganxar dades des d'excel
+            <li >fer figura variants per afegir a sarsaigua.icra.cat
+          </ul>
+        </li>
+        <li prio>
+          [2024-10-22]
+          <b>vacuña, etornes, lcorominas, wgernjak</b>
+          <p><a href="//indicadors.icradev.cat">indicadors.icradev.cat</a></p>
+          web per automatitzar indicadors icra
+        </li>
+        <li prio>
+          [2025-02-04]
+          <b>dalvarez</b>
+          <p><a href="//standards.icradev.cat">standards.icradev.cat</a></p>
+          plataforma standards
+        </li>
+
       <!--/todo next task-->
-    </ul>
-  </div>
-</details>
+</ul></div></details>
+
+<script>
+  window.addEventListener("load",function(ev){
+    console.log(ev);
+    filtre_tasques("prio");
+  });
+</script>
+
