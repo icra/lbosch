@@ -767,35 +767,50 @@
           [2024-10-15]
           <b>mcelic</b>
           <p><a href="https://orbitrap.icradev.cat">orbitrap.icradev.cat</a></p>
-          afegir taula summary
+          <ul>
+            <li>afegir columna (area-blank)
+            <li>restar blank a MM (MM_Blank_AIF)
+            <li>restar blank a mostres (Blank_HPLC_AIF)
+            <li>fer mitjana i desviació estàndard rèpliques (a,b,c)
+            <li>afegir desviació estàndard al càlcul de Recovery
+            <li>tenir en compte que el recovery pot tenir diferents nivells (100ppb, 50ppb...)
+            <li>després de restar el blanc a l'àrea, calcular regressió MM i descartar valors negatius o zero o "N/F"
+            <li>discutir més endavant exportació resultats
+          </ul>
         </li>
+
         <li wait>
           [2024-10-15]
           <b>isanchez, rdiaz</b>
           simulador escenaris (projectes, persones, despeses, indicadors)
           <a href="https://simulador-icra.icradev.cat">simulador-icra.icradev.cat</a>
         </li>
+
         <li wait>
           [2024-10-15]
           <b>pcolman</b>
           instalar nf-core (nextflow). pcolman prova i em diu si funciona tot ok
         </li>
+
         <li comp>
           [2024-10-15]
           <b>vrocasalva</b>
           renovar loading+plesk+domini icradev
         </li>
+
         <li>
           [2024-10-16]
           <b>sbusquets, lcorominas</b>:
           web solucions dsu (<a href="//solucions-dsu.icradev.cat">solucions-dsu.icradev.cat</a>)<br>
           valorar si es pot fer que es vegi bé al mòbil
         </li>
+
         <li>
           [2024-10-16]
           <b>mriva</b>:
           trucar home gencat sobre tema ip fixe
         </li>
+
         <li prio>
           [2024-10-18]
           <b>wgernjak, dmercado, lcorominas, rmarce</b>:
@@ -839,37 +854,47 @@
           <ul>
             <li>descarregar models (7TB) a disc dur icra wolf
           </ul>
-
         </li>
+
         <li prio>
           [2025-01-20]
           <b>mfillol, lcorominas</b>
           <p><a href="//covidvigilancia.icra.cat">covidvigilancia.icra.cat</a></p>
           <ul>
             <li comp>canvi al formulari 2 (lab) per enganxar dades des d'excel
-            <li >fer figura variants per afegir a sarsaigua.icra.cat
+            <li>fer figura variants per afegir a sarsaigua.icra.cat
           </ul>
         </li>
+
         <li prio>
           [2024-10-22]
-          <b>vacuña, etornes, lcorominas, wgernjak</b>
+          <b>vacuña, etornes, rdiaz</b>
           <p><a href="//indicadors.icradev.cat">indicadors.icradev.cat</a></p>
           web per automatitzar indicadors icra
+          <ul>
+            <li>Indicadors de centre (2023-2029) (cada any)
+            <li>Indicadors de IP (cada 3 anys)
+            <li>API calls to:
+              <ul>
+                <li>Scopus (ok)</li>
+                <li>Power BI (TODO)</li>
+                <li>MS SQL Server (TODO)</li>
+              </ul>
+            </li>
+          </ul>
         </li>
+
         <li prio>
           [2025-02-04]
           <b>dalvarez</b>
           <p><a href="//standards.icradev.cat">standards.icradev.cat</a></p>
           plataforma standards
         </li>
-
       <!--/todo next task-->
-</ul></div></details>
+    </ul>
+  </div>
+</details>
 
 <script>
-  window.addEventListener("load",function(ev){
-    console.log(ev);
-    filtre_tasques("prio");
-  });
+  window.addEventListener("load",ev=>filtre_tasques("prio"));
 </script>
-
