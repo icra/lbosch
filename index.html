@@ -557,77 +557,6 @@
             <li wait>[2024-04-25] apedregal i dmercado fan proves i em diuen algo
           </ul>
         </li>
-        <li wait>[2024-04-19] <b>jcomas, emendoza, gbuttiglieri</b> paret verda icra
-          <ul>
-            <li comp>Reunió 26ABR 9h (jcomas, isegirona, lbosch) a icra
-            <li comp>reunió 16MAI (el PLC serà siemens o omron)
-              <details>
-                <summary>exemple codi JS amb llibreria "modbus-serial"</summary>
-                <div>
-                  <code><pre>
-                    //LLEGIR PLC
-                    const Modbus = require('modbus-serial');
-
-                    //nueva conexión Modbus TCP
-                    const client = new Modbus();
-                    const ip = '192.168.1.100'; // Dirección IP del PLC Siemens
-                    const port = 502; // Puerto Modbus TCP del PLC Siemens
-
-                    //conecta al PLC
-                    client.connectTCP(ip,{port}).then(()=>{
-                      console.log('Conexión exitosa al PLC');
-
-                      //lee una variable del PLC (ejemplo: registro 1000)
-                      client.readHoldingRegisters(1000,1).then((data)=>{
-                        console.log('Valor de la variable en el registro 1000:', data.data);
-                      }).catch((error) => {
-                        console.error('Error al leer la variable:', error);
-                      }).finally(() => {
-                        client.close(); // Cierra la conexión después de leer
-                      });
-                    }).catch((error) => {
-                      console.error('Error al conectar al PLC:', error);
-                    });
-                  </pre></code>
-                  <code><pre>
-                    //ESCRIURE AL PLC
-                    const Modbus = require('modbus-serial');
-
-                    //nueva conexión Modbus TCP
-                    const client = new Modbus();
-
-                    const ip = '192.168.1.100'; // Dirección IP del PLC Siemens
-                    const port = 502; // Puerto Modbus TCP del PLC Siemens
-
-                    //conecta al PLC
-                    client.connectTCP(ip, { port })
-                      .then(() => {
-                        console.log('Conexión exitosa al PLC');
-
-                        const addressToWrite = 2000; // Dirección del registro para escribir (ajusta según tu configuración)
-                        const valueToWrite = 1; // Valor para encender el dispositivo (por ejemplo, 1 para encender)
-
-                        // Escribe el valor en el registro del PLC
-                        client.writeRegisters(addressToWrite, [valueToWrite])
-                          .then(() => {
-                            console.log('Valor escrito correctamente en el PLC');
-                          })
-                          .catch((error) => {
-                            console.error('Error al escribir en el PLC:', error);
-                          })
-                          .finally(() => {
-                            client.close(); // Cierra la conexión después de escribir
-                          });
-                      })
-                      .catch((error) => {
-                        console.error('Error al conectar al PLC:', error);
-                      });
-                  </pre></code>
-                </div>
-              </details>
-            </li>
-          </ul>
-        </li>
         <li wait>[2024-04-24] <b>cgutierrez</b> <a href="//pts.icradev.cat">pts.icradev.cat</a>
           <ul>
             <li wait>reunió per dissenyar web
@@ -646,7 +575,7 @@
             <li comp>noves (720 a 749)</li>
           </ul>
         </li>
-        <li>[2024-04-26]
+        <li comp>[2024-04-26]
           <b>rdiaz</b> parar nodes antics cluster (compute-{00..11})
         </li>
         <li>
@@ -667,12 +596,14 @@
         </li>
         <li prio>
           [2024-06-07]
-          <b>mriva, eherran, emendoza, jcomas</b>
+          <b>mriva, eherran, emendoza, gbuttiglieri, jcomas</b>
           <p><a href="//paretverda.icradev.cat">paretverda.icradev.cat</a></p>
           <ul>
-            <li> afegir visualitzador PLC modbus dins d'aquest domini
-            <li> ips fixes: 192.168.103.75, 192.168.103.76
-            <li> preguntar estat PLC albert i implementar llibreria modbus
+            <li comp> afegir visualitzador PLC modbus dins d'aquest domini
+            <li comp> ips fixes: 192.168.103.75, 192.168.103.76
+            <li comp> preguntar estat PLC albert i implementar llibreria modbus
+            <li comp> visor implementat a: paretverda.icradev.cat/plc
+            <li> programar lectures cada 1h/2h (72min?)
           </ul>
         </li>
         <li comp>
@@ -898,10 +829,25 @@
           <p><a href="//aiguaneix.icradev.cat">aiguaneix.icradev.cat</a></p>
           plataforma aiguaneix: importació automàtica de CSVs de sensors
           a base de dades SQL i graficar valors sota demanda 
+          <ul>
+            <li comp> implementar conversor CSV a SQL
+            <li> graph api microsoft llegir correu aiguaneix@icra.cat
+          </ul>
+        </li>
+        <li>
+          [2025-03-18]
+          <b>agabarda, jpueyo, ssabater</b>
+          parlar web projecte H2OSEG
+        </li>
+        <li prio>
+          [2025-03-14]
+          <b>osacristan</b>
+          kraken2 problema base de dades 500gb (falta RAM)
+          <ul>
+            <li>contestar</li>
+          </ul>
         </li>
       <!--/todo next task-->
-
     </ul>
   </div>
-</details>
-<script>window.addEventListener("load",ev=>filtre_tasques("prio"));</script>
+</details><script>window.addEventListener("load",ev=>filtre_tasques("prio"));</script>
