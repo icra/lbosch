@@ -489,9 +489,10 @@
             <li comp>reunió 10ABR isanchez+eduard
             <li comp>esperar dvila(DSET) i eduard(PARC) executin segons el parlat a la reunió
             <li wait>sigfox HTTP REST API (<a href="https://support.sigfox.com/apidocs">https://support.sigfox.com/apidocs</a>)
+            <li wait>esperar resposta manteniment parc
           </ul>
         </li>
-        <li prio>[2024-03-13] <b>vrocasalva, cgutierrez, mpijuan, wgernjak</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
+        <li comp>[2024-03-13] <b>vrocasalva, cgutierrez, mpijuan, wgernjak</b>: Web Risk Assessment (crear sistema per pujar documents firmats)
           <ul>
             <li comp>login investigadors ICRA
               <ul>
@@ -603,7 +604,8 @@
             <li comp> ips fixes: 192.168.103.75, 192.168.103.76
             <li comp> preguntar estat PLC albert i implementar llibreria modbus
             <li comp> visor implementat a: paretverda.icradev.cat/plc
-            <li> programar lectures cada 1h/2h (72min?)
+            <li comp> programar lectures cada 1h/2h (72min?)
+            <li> programar timestep lectures cada 5 min quan s'engegui la bomba
           </ul>
         </li>
         <li comp>
@@ -742,7 +744,7 @@
           trucar home gencat sobre tema ip fixe
         </li>
 
-        <li prio>
+        <li comp>
           [2024-10-18]
           <b>wgernjak, dmercado, lcorominas, rmarce</b>:
           projecte RECREATE, crear estructura i subdomini web amb checboxes per
@@ -804,12 +806,16 @@
           web per automatitzar indicadors icra
           <ul>
             <li>Indicadors de centre (2023-2029) (cada any)
-            <li>Indicadors de IP (cada 3 anys)
-            <li>API calls to:
+            <li>Indicadors IP (cada 3 anys)
+            <li>API calls a:
               <ul>
-                <li>Scopus (ok)</li>
-                <li>MS SQL Server (ok)</li>
-                <li wait>Power BI (esperar ruben)</li>
+                <li wait>Scopus (ok)</li>
+                <li comp>MS SQL Server (icranet) (ok)</li>
+                <li wait>Power BI (fundanet) (esperar ruben)</li>
+                <li comp>tema SAGE (preguntar etornes)</li>
+                <li prio>
+                  Investigar graph api microsoft per llegir documents power bi
+                </li>
               </ul>
             </li>
           </ul>
@@ -826,18 +832,19 @@
           <b>wgernjak, tlock</b>
           <p><a href="//aiguaneix.icradev.cat">aiguaneix.icradev.cat</a></p>
           plataforma aiguaneix: importació automàtica de CSVs de sensors
-          a base de dades SQL i graficar valors sota demanda 
+          a base de dades SQL i graficar valors sota demanda
           <ul>
             <li comp> implementar conversor CSV a SQL
             <li> graph api microsoft llegir correu aiguaneix@icra.cat
           </ul>
         </li>
-        <li prio>
+        <li comp>
           [2025-03-18]
-          <b>agabarda, agou, jpueyo, ssabater</b>
-          <p><a href="//h2oseg.icradev.cat">h2oseg.icradev.cat</a></p>
+          <b>agabarda, jpueyo, ssabater</b>
+          web projecte H2OSEG.es
           <ul>
-            <li>[ok] crear estructura dades excel a SQL per poder processar en R
+            <li comp>instalar wordpress
+            <li comp>accés ssh al loading per "agustin"
           </ul>
         </li>
         <li comp>
@@ -845,8 +852,13 @@
           <b>osacristan</b>
           kraken2 problema base de dades 500gb (falta RAM)
           <ul>
-            <li>contestar</li>
+            <li>solucionat fent servir servei extern
           </ul>
+        </li>
+        <li>
+          [2025-06-11]
+          <b>fcomalada, vacuña</b>
+          web scrapping api wikiloc codi francesc; intentar fer funcionar al cluster
         </li>
       <!--/todo next task-->
     </ul>
