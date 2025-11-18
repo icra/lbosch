@@ -116,6 +116,11 @@
       background:red;
       border-radius:5px;
     }
+    ul#tasques li[focus_actual], td[focus_actual]{
+      border-color:#af0;
+      border-width:4px;
+      background:#af02;
+    }
   </style>
 
   <script>
@@ -396,13 +401,13 @@
             <li> sistema FTP
               <ul>
                 <li comp>comentar amb afreixa reunió 30ABR
-                <li prio>fer funcionar correctament
+                <li >fer funcionar correctament
               </ul>
             </li>
             <li> mesocosmos live
               <ul>
                 <li comp>comentar amb afreixa reunió 30ABR
-                <li prio>receptes automàtiques (lògica)
+                <li >receptes automàtiques (lògica)
                 <li>(futur) disseny interfície
               </ul>
             </li>
@@ -627,7 +632,7 @@
             <li comp> preguntar estat PLC albert i implementar llibreria modbus
             <li comp> visor implementat a: paretverda.icradev.cat/plc
             <li comp> programar lectures cada 1h/2h (72min?)
-            <li> programar timestep lectures cada 5 min quan s'engegui la bomba
+            <li prio> programar timestep lectures cada 5 min quan s'engegui la bomba
           </ul>
         </li>
 
@@ -746,7 +751,7 @@
         <li comp>
           [2024-10-15]
           <b>isanchez, rdiaz</b>
-          simulador escenaris (projectes, persones, despeses, indicadors)
+          simulador escenaris (projectes, persones, despeses)
           <a href="https://simulador.icradev.cat">simulador.icradev.cat</a>
         </li>
 
@@ -820,13 +825,15 @@
           </ul>
         </li>
 
-        <li prio>
+        <li prio focus_actual>
           [2025-01-20]
           <b>mfillol, lcorominas</b> SARSAIGUA
           <p><a href="//covidvigilancia.icra.cat">covidvigilancia.icra.cat</a></p>
           <ul>
-            <li comp>canvi al formulari 2 (lab) per enganxar dades des d'excel
-            <li>fer figura variants per afegir a sarsaigua.icra.cat
+            <li prio>afegir api variants zenodo
+            <li prio>iframe variants dins de sarsaigua.icra.cat
+            <li prio>agrupació de 5 edars (DGIR, DLLE, DTAR, DPDL, DBSS) per gràfic N1 mitjana
+            <li prio>(no urgent) generació automàtica informes
           </ul>
         </li>
 
@@ -836,17 +843,17 @@
           <p><a href="//indicadors.icradev.cat">indicadors.icradev.cat</a></p>
           web per automatitzar indicadors icra
           <ul>
-            <li>Indicadors de centre (2023-2029) (cada any)
-            <li>Indicadors IP (cada 3 anys)
+            <li comp>Indicadors de centre (2023-2029) (cada any)
+            <li comp>Indicadors IP (cada 3 anys)
             <li>API calls a:
               <ul>
-                <li wait>Scopus (ok)</li>
-                <li comp>MS SQL Server (icranet) (ok)</li>
-                <li wait>Power BI (fundanet) (esperar ruben)</li>
-                <li comp>tema SAGE (preguntar etornes)</li>
+                <li comp> Scopus (ok)
+                <li comp> MS SQL Server (icranet) (ok)
+                <li comp> api SAGE
                 <li prio>
-                  Investigar graph api microsoft per llegir documents power bi
+                  afegir api open alex (segons reunió amb etornés)
                 </li>
+                <li>Investigar graph api microsoft per llegir documents power bi
               </ul>
             </li>
           </ul>
@@ -915,7 +922,8 @@
           <b>sdrammeh, pgimenez</b>
           <p>crear web estàtica pròxims esdeveniments a TV entrada</p>
           <ul>
-            <li wait>demanar accés mysql de wordpress</li>
+            <li comp>demanar accés mysql de wordpress</li>
+            <li>test accés</li>
           </ul>
         </li>
       <!--next task here-->
@@ -925,40 +933,46 @@
 
 <!--ordre prioritats-->
 <div style="background:white;padding:0.618em 1em">
-  <b>Planificació (sprints de 2/3 setmanes)</b>
-  <small>
-    nota: aquesta planificació pot anar canviant sobre la marxa cada final
-    d'sprint si es reprioritza (per exemple, si entra una petició urgent de
-    direcció)
-  </small>
+  <b>Planificació setmanes</b>
+  <ul>
+    <li><b>"Sprints"</b>: períodes de 2 ò 3 setmanes de dedicació a un sol projecte.
+    <li>
+      Aquesta planificació pot anar canviant sobre la marxa cada final
+      d'sprint si es reprioritza (per exemple, si entra una petició molt urgent)
+    </li>
+  </ul>
+
   <table border=1>
     <thead>
       <tr>
         <th>Setmana (dilluns)</th>
-        <th>Dedicació a Projecte/s</th>
+        <th>Projecte principal</th>
+        <th>status
       </tr>
     </thead>
     <tbody>
-      <!--blocs de 4 setmanes (mesos)-->
-      <tr><td>2025-11-10<td>sarsaigua
-        <td style="background:#af0">ara
-      <tr><td>2025-11-17<td>sarsaigua
+      <tr><td>2025-11-10<td>sarsaigua<td style="background:#ccc">fet
+      <tr><td>2025-11-17<td>sarsaigua<td focus_actual>focus actual
       <tr><td>2025-11-24<td>sarsaigua
 
       <tr><td>2025-12-01<td>orbitrap
       <tr><td>2025-12-08<td>orbitrap
+
       <tr><td>2025-12-15<td>paretverda
-
       <tr><td>2026-01-05<td>paretverda
-      <tr><td>2026-01-12<td>h2oseg
-      <tr><td>2026-01-19<td>h2oseg
-      <tr><td>2026-01-26<td>aiguaneix
 
-      <tr><td>2026-02-02<td>aiguaneix
-      <tr><td>2026-02-09<td>
-      <tr><td>2026-02-16<td>
-      <tr><td>2026-02-23<td>
+      <tr><td>2026-01-12<td>standards
+      <tr><td>2026-01-19<td>standards
 
+      <tr><td>2026-01-26<td>h2oseg
+      <tr><td>2026-02-02<td>h2oseg
+
+      <tr><td>2026-02-09<td>pantalla85_notícies_icra
+
+      <tr><td>2026-02-16<td>indicadors_openAlex
+      <tr><td>2026-02-23<td>indicadors_openAlex
+
+      <!--març-->
       <tr><td>2026-03-02<td>
       <tr><td>2026-03-09<td>
       <tr><td>2026-03-16<td>
