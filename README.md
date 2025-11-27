@@ -4,7 +4,7 @@ Lluís Bosch, ICRA Research Support Computer Scientist
 
 <a href="docs/2023-11-30-lluis-bosch-empowering-research-through-computing-support.pptx">Presentation (PPTX)</a><br>
 
-Services that that ICRA employees can request to IT Research Support:
+Services that ICRA employees can request to IT Research Support:
 <ul>
   <li>Assistance in programming.
   <li>Automation of tasks.
