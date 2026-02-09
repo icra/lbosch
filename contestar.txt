@@ -1,0 +1,8 @@
+
+mcelic:      orbitrap
+afreixa:     tast
+sady:        disseny notícies
+
+dalvarez:    standards
+lcorominas:  sarsaigua
+montoliu:    visita
