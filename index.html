@@ -5,7 +5,7 @@
   <style>
     /*general*/
     body{
-      font-family:monospace;
+      font-family:calibri;
       overflow-y:scroll;
       background:#e8e8e8;
     }
@@ -185,8 +185,10 @@
         });
       });;
       let icra = Array.from(new Set(persones)).sort();
+      if(icra.length<2) return;
 
       let container = document.querySelector("#filtre_researchers");
+      container.innerHTML="";
       icra.forEach(persona=>{
         let div = document.createElement("div");
         container.appendChild(div);
@@ -238,13 +240,13 @@
     }
   </script>
 
-  <script>
-    //onload
-    window.addEventListener("load", (event) => {
+  <script>//onload trigger
+    window.addEventListener("load",function(){
       fetch("api.php").then(r=>r.text()).then(txt=>{
         document.querySelector("#indexhtmlfilemtime").innerHTML=txt;
       });
       get_all_icra_researchers();
+      filtre_tasques("prio");
     });
   </script>
 </head><body>
@@ -280,8 +282,8 @@
   </div><hr>
 </div>
 
-<!--llista tasques-->
-<details open>
+<!--llista tasques per projecte-->
+<details>
   <summary>
     Tasks &mdash;
     <code
@@ -317,7 +319,9 @@
 
     <!--filtre noms investigadors-->
     <div>
-      ICRA people:
+      <button onclick="get_all_icra_researchers();this.style.display='none'">
+        Filter by ICRA person
+      </button>
       <div
         id=filtre_researchers
         style="
@@ -848,7 +852,7 @@
           </ul>
         </li>
 
-        <li prio focus_actual>
+        <li prio>
           [2024-10-22]
           <b>vacuña, etornes, rdiaz</b> "indicadors_icra"
           <p><a href="//indicadors.icradev.cat">indicadors.icradev.cat</a></p>
@@ -1006,11 +1010,11 @@
           </p>
         </li>
 
-        <li comp>
+        <li prio focus_actual>
           [2026-02-02]
-          <b>afreixa, pgimenez, nbesoli</b>
+          <b>afreixa, pgimenez, nbesoli, sdrammeh</b>
           <p>
-            tast_aigua
+            tast_aigua, glops
           </p>
           <p>
             Estem preparant altre vegada l'activitat del tast d'aigües per l'activitat que farem de portes obertes del dia 11 de febrer. <br>
@@ -1034,16 +1038,20 @@
         <li prio>
           [2026-06-09]
           <b>rdiaz</b>
-          vincular json cluster (exportat de fundanet) amb web indicadors i web standards (comandes)
+          <p>indicadors</p>
+          <p>
+            vincular json cluster (exportat de fundanet) amb web indicadors i
+            web standards (comandes)
+          </p>
         </li>
       <!--next task here-->
     </ul>
   </div>
-</details><script>window.addEventListener("load",ev=>filtre_tasques("prio"));</script>
+</details><hr>
 
-<!--ordre prioritats-->
+<!--setmanes-->
 <div style="background:white;padding:0.618em 1em">
-  <b>Planificació setmanes</b>
+  <b>Planificació setmanes (sprints)</b>
   <ul>
     <li><b>"Sprints"</b>: períodes de 2 ò 3 setmanes de dedicació a un sol projecte.
     <li>Aquesta planificació pot anar canviant sobre la marxa cada final d'sprint si es reprioritza (per exemple, si entra petició molt urgent)</li>
@@ -1052,12 +1060,41 @@
     <thead>
       <tr>
         <th>Setmana (dilluns)</th>
-        <th>Projecte/s actiu/s</th>
+        <th>Projecte prioritari</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>2026-08-24<td>orbitrap,standards,glops,json_fundanet
-      <tr><td>2027-01-01<td>plataforma col·laboració califòrnia-icra ("calcat","catcal",nom per determinar)
+      <tr><th colspan=2>agost 2026
+      <tr><td>2026-08-24<td>orbitrap
+      <tr><td>2026-08-31<td>orbitrap
+
+      <tr><th colspan=2>setembre 2026
+      <tr><td>2026-09-07<td>standards
+      <tr><td>2026-09-14<td>standards
+      <tr><td>2026-09-21<td>standards
+      <tr><td>2026-09-28<td>standards
+
+      <tr><th colspan=2>octubre 2026
+      <tr><td>2026-10-05<td>json_fundanet
+      <tr><td>2026-10-12<td>json_fundanet
+      <tr><td>2026-10-19<td>
+      <tr><td>2026-10-26<td>
+
+      <tr><th colspan=2>novembre 2026
+      <tr><td>2026-11-02<td>
+      <tr><td>2026-11-09<td>
+      <tr><td>2026-11-16<td>
+      <tr><td>2026-11-23<td>
+      <tr><td>2026-11-30<td>
+
+      <tr><th colspan=2>desembre 2026
+      <tr><td>2026-12-07<td>
+      <tr><td>2026-12-14<td>
+      <tr><td>2026-12-21<td>
+      <tr><td>2026-12-28<td>
+
+      <tr><th colspan=2>gener 2027
+      <tr><td>2027-01-11<td>plataforma col·laboració califòrnia-icra ("calcat","catcal",nom per determinar)
     </tbody>
   </table>
 </div>
