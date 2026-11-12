@@ -1,5 +1,10 @@
 <?php
-  //funció per calcular temps passat des d'una data
+  
+  /*
+    calcula temps passat des d'una data concreta
+    (per exemple: "fa 2 mesos")
+  */
+
   //format: "yyyy-mm-dd hh:MM:ss"
   function time_ago($time) {
     $time_ago = strtotime($time);
